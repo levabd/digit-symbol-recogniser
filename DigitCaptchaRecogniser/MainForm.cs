@@ -9,7 +9,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 using DigitCaptchaRecogniser.Helpers;
 
 namespace DigitCaptchaRecogniser
@@ -28,16 +27,18 @@ namespace DigitCaptchaRecogniser
                 imagePath.Text = openImageDialog.FileName;
 
                 sourceImage.Image = ImageHelper.SafeLoadFromFile(imagePath.Text);
+
                 kuwaharaImage.Image = sourceImage.Image
                     .Kuwahara(Properties.Settings.Default.KuwaharaCore)
                     .Kuwahara(Properties.Settings.Default.KuwaharaCore)
                     .Kuwahara(Properties.Settings.Default.KuwaharaCore);
+
                 thresholdImage.Image = sourceImage.Image
                     .Kuwahara(Properties.Settings.Default.KuwaharaCore)
                     .Kuwahara(Properties.Settings.Default.KuwaharaCore)
-                    ;
-                kuwaharaImage.Image.Save(Path.GetDirectoryName(openImageDialog.FileName) + "test1.png", ImageFormat.Png);
-                //medianImage.Image = kuwaharaImage.Image.;
+                    .Threshold(Properties.Settings.Default.Treshold);
+                //kuwaharaImage.Image.Save(Path.GetDirectoryName(openImageDialog.FileName) + "test1.png", ImageFormat.Png);
+                medianImage.Image = kuwaharaImage.Image.Threshold(Properties.Settings.Default.Treshold);
             }
         }
     }

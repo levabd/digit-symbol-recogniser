@@ -31,5 +31,14 @@ namespace DigitCaptchaRecogniser.Properties {
                 return ((int)(this["KuwaharaCore"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("91")]
+        public byte Treshold {
+            get {
+                return ((byte)(this["Treshold"]));
+            }
+        }
     }
 }

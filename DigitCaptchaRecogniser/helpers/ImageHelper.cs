@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using AForge.Imaging.Filters;
 
 namespace DigitCaptchaRecogniser.Helpers
 {
@@ -18,6 +19,12 @@ namespace DigitCaptchaRecogniser.Helpers
 
                 return null;
             }
+        }
+
+        public static Image Threshold(this Image image, byte threshold)
+        {
+            Threshold thresholdFilter = new Threshold(threshold);
+            return thresholdFilter.Apply(new Bitmap(image));
         }
 
         public static Image Kuwahara(this Image image, int coreSize)
