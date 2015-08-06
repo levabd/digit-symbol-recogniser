@@ -10,6 +10,12 @@ namespace DigitCaptchaRecogniser.Helpers
 {
     public static class ImageHelper
     {
+        private static Bitmap BitmapGrayscale(Image image)
+        {
+            Grayscale grayScaler = new Grayscale(0.2125, 0.7154, 0.0721);
+            return grayScaler.Apply(new Bitmap(image));
+        }
+
         /// <summary>
         /// Load image from file without filetype exception
         /// </summary>
@@ -30,6 +36,19 @@ namespace DigitCaptchaRecogniser.Helpers
             }
         }
 
+        /// <summary>
+        /// Blur image with Gauss
+        /// </summary>
+        /// <param name="image"></param>
+        /// <param name="sigma">Gaussia sigma</param>
+        /// <param name="kernelSize">Gaussia kermel</param>
+        /// <returns></returns>
+        public static Image Gauss(this Image image, double sigma, int kernelSize)
+        {
+            GaussianBlur blur = new GaussianBlur(sigma, kernelSize);
+            return blur.Apply(new Bitmap(image));
+        }
+
         /// <returns>Cropped image</returns>
         public static Image Crop(this Image image, Rectangle rectangle)
         {
@@ -44,9 +63,19 @@ namespace DigitCaptchaRecogniser.Helpers
         /// <param name="threshold">threshold for binarization</param>
         public static Image Threshold(this Image image, byte threshold)
         {
-            Grayscale grayScaler = new Grayscale(0.2125, 0.7154, 0.0721);
             Threshold thresholdFilter = new Threshold(threshold);
-            return thresholdFilter.Apply(grayScaler.Apply(new Bitmap(image)));
+            return thresholdFilter.Apply(BitmapGrayscale(image));
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="image"></param>
+        /// <returns></returns>
+        public static Image CannyEdges(this Image image)
+        {
+            CannyEdgeDetector cannyEdge = new CannyEdgeDetector();
+            return cannyEdge.Apply(BitmapGrayscale(image));
         }
 
 
@@ -68,10 +97,9 @@ namespace DigitCaptchaRecogniser.Helpers
             var se = new short[,] {  {1, 1, 1},
                                      {1, 1, 1},
                                      {1, 1, 1}  };
-            Grayscale grayScaler = new Grayscale(0.2125, 0.7154, 0.0721);
 
             Dilatation dilatationFilter = new Dilatation(se);
-            return dilatationFilter.Apply(grayScaler.Apply(new Bitmap(image)));
+            return dilatationFilter.Apply(BitmapGrayscale(image));
         }
 
         /// <summary>
