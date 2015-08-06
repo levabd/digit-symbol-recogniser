@@ -1,11 +1,20 @@
 ﻿using System;
 using System.Drawing;
+using AForge;
+using AForge.Imaging;
 using AForge.Imaging.Filters;
+using Image = System.Drawing.Image;
+using Point = System.Drawing.Point;
 
 namespace DigitCaptchaRecogniser.Helpers
 {
     public static class ImageHelper
     {
+        /// <summary>
+        /// Load image from file without filetype exception
+        /// </summary>
+        /// <param name="filename">Name of file</param>
+        /// <returns>Loaded image or null otherwise</returns>
         public static Image SafeLoadFromFile(string filename)
         {
             try
@@ -21,12 +30,125 @@ namespace DigitCaptchaRecogniser.Helpers
             }
         }
 
-        public static Image Threshold(this Image image, byte threshold)
+        /// <returns>Cropped image</returns>
+        public static Image Crop(this Image image, Rectangle rectangle)
         {
-            Threshold thresholdFilter = new Threshold(threshold);
-            return thresholdFilter.Apply(new Bitmap(image));
+            Crop cropper = new Crop(rectangle);
+            return cropper.Apply(new Bitmap(image));
         }
 
+        /// <summary>
+        /// Binarize image with threshold filter
+        /// </summary>
+        /// <param name="image"></param>
+        /// <param name="threshold">threshold for binarization</param>
+        public static Image Threshold(this Image image, byte threshold)
+        {
+            Grayscale grayScaler = new Grayscale(0.2125, 0.7154, 0.0721);
+            Threshold thresholdFilter = new Threshold(threshold);
+            return thresholdFilter.Apply(grayScaler.Apply(new Bitmap(image)));
+        }
+
+
+        /// <summary>
+        /// Aforge grayscale
+        /// </summary>
+        public static Image Grayscale(this Image image)
+        {
+            Grayscale grayScaler = new Grayscale(0.2125, 0.7154, 0.0721);
+            return grayScaler.Apply(new Bitmap(image));
+        }
+
+        /// <summary>
+        /// Aforge median dilatation morfology with default kernel
+        /// </summary>
+        public static Image Dilatation(this Image image)
+        {
+            // default kernel
+            var se = new short[,] {  {1, 1, 1},
+                                     {1, 1, 1},
+                                     {1, 1, 1}  };
+            Grayscale grayScaler = new Grayscale(0.2125, 0.7154, 0.0721);
+
+            Dilatation dilatationFilter = new Dilatation(se);
+            return dilatationFilter.Apply(grayScaler.Apply(new Bitmap(image)));
+        }
+
+        /// <summary>
+        /// Aforge median filtration
+        /// </summary>
+        /// <param name="image"></param>
+        /// <param name="core">Median core size</param>
+        public static Image Median(this Image image, int core)
+        {
+            var bitmapImage = new Bitmap(image);
+            Median medianFilter = new Median(core);
+            medianFilter.ApplyInPlace(bitmapImage);
+            return bitmapImage;
+        }
+
+        /// <summary>
+        /// Display little noise object on image
+        /// </summary>
+        /// <param name="image"></param>
+        /// <param name="fillColor">Color to fill noise bject</param>
+        /// <param name="threshold">Threshold for noise oblect area</param>
+        public static Image DisplayNoise(this Image image, Color fillColor, int threshold = 100)
+        {
+            Bitmap bitmapImage = new Bitmap(image);
+
+            BlobCounter bc = new BlobCounter(bitmapImage);
+            // specify sort order
+            bc.ObjectsOrder = ObjectsOrder.Size;
+            Blob[] blobs = bc.GetObjectsInformation();
+
+            SolidBrush redBrush = new SolidBrush(fillColor);
+            using (Graphics digit1Graph = Graphics.FromImage(bitmapImage))
+            {
+                foreach (Blob blob in blobs)
+                {
+                    if (blob.Area < threshold)
+                        digit1Graph.FillRectangle(redBrush, blob.Rectangle);
+                }
+            }
+
+            return bitmapImage;
+        }
+
+        /// <summary>
+        /// Remove little noise object on binary image
+        /// </summary>
+        /// <param name="image"></param>
+        /// <param name="threshold">Threshold for noise oblect area</param>
+        public static Image RemoveNoise(this Image image, int threshold = 100)
+        {
+            Bitmap bitmapImage = new Bitmap(image);
+
+
+            BlobCounter bc = new BlobCounter(bitmapImage);
+            // specify sort order
+            bc.ObjectsOrder = ObjectsOrder.Size;
+            Blob[] blobs = bc.GetObjectsInformation();
+
+
+            SolidBrush redBrush = new SolidBrush(Color.Black);
+            using (Graphics digit1Graph = Graphics.FromImage(bitmapImage))
+            {
+                foreach (Blob blob in blobs)
+                {
+                    if (blob.Area < threshold)
+                        digit1Graph.FillRectangle(redBrush, blob.Rectangle);
+                }
+            }
+
+            return bitmapImage;
+        }
+
+        /// <summary>
+        /// Implementation of Kuwahara filter. See https://en.wikipedia.org/wiki/Kuwahara_filter
+        /// </summary>
+        /// <param name="image"></param>
+        /// <param name="coreSize">Kuwahara core size</param>
         public static Image Kuwahara(this Image image, int coreSize)
         {
             Bitmap tempBitmap = new Bitmap(image);

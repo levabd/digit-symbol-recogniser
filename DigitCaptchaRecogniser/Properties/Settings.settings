@@ -6,7 +6,16 @@
       <Value Profile="(Default)">2</Value>
     </Setting>
     <Setting Name="Treshold" Type="System.Byte" Scope="Application">
-      <Value Profile="(Default)">91</Value>
+      <Value Profile="(Default)">95</Value>
+    </Setting>
+    <Setting Name="DigitWidth" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">32</Value>
+    </Setting>
+    <Setting Name="SecondDigitWidth" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">28</Value>
+    </Setting>
+    <Setting Name="NoiseObjectThreshold" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">70</Value>
     </Setting>
   </Settings>
 </SettingsFile>

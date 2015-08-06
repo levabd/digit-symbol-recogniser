@@ -34,10 +34,37 @@ namespace DigitCaptchaRecogniser.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("91")]
+        [global::System.Configuration.DefaultSettingValueAttribute("95")]
         public byte Treshold {
             get {
                 return ((byte)(this["Treshold"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("32")]
+        public int DigitWidth {
+            get {
+                return ((int)(this["DigitWidth"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("28")]
+        public int SecondDigitWidth {
+            get {
+                return ((int)(this["SecondDigitWidth"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("70")]
+        public int NoiseObjectThreshold {
+            get {
+                return ((int)(this["NoiseObjectThreshold"]));
             }
         }
     }
