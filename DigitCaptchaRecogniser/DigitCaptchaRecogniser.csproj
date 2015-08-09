@@ -47,6 +47,15 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>AForge\AForge.Math.dll</HintPath>
     </Reference>
+    <Reference Include="Emgu.CV">
+      <HintPath>EmguCV\Emgu.CV.dll</HintPath>
+    </Reference>
+    <Reference Include="Emgu.CV.UI">
+      <HintPath>EmguCV\Emgu.CV.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Emgu.Util">
+      <HintPath>EmguCV\Emgu.Util.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -93,7 +102,27 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="CAProcessing\ContourAnalysisProcessing.csproj">
+      <Project>{38f5165f-094d-42e5-b4aa-7bf299901f5f}</Project>
+      <Name>ContourAnalysisProcessing</Name>
+    </ProjectReference>
+    <ProjectReference Include="CA\ContourAnalysis.csproj">
+      <Project>{ddbd6cf7-2367-4084-a609-1b9c1885dc98}</Project>
+      <Name>ContourAnalysis</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="opencv_core220.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="opencv_highgui220.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="opencv_imgproc220.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

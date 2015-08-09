@@ -12,12 +12,11 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Emgu.CV;
 using Emgu.CV.Structure;
 using System.Drawing;
 using System.Threading.Tasks;
+using Emgu.CV.CvEnum;
 
 namespace ContourAnalysisNS
 {
@@ -45,12 +44,12 @@ namespace ContourAnalysisNS
         public Image<Gray, byte> binarizedFrame;
         
 
-        public void ProcessImage(Image<Bgr, byte> frame)
+        public void ProcessImage(Image<Bgr, byte> frame, bool enableMaxContour = false)
         {
-            ProcessImage(frame.Convert<Gray, Byte>());
+            ProcessImage(frame.Convert<Gray, Byte>(), enableMaxContour);
         }
 
-        public void ProcessImage(Image<Gray, byte> grayFrame)
+        public void ProcessImage(Image<Gray, byte> grayFrame, bool enableMaxContour = false)
         {
             if (equalizeHist)
                 grayFrame._EqualizeHist();//autocontrast
@@ -65,7 +64,8 @@ namespace ContourAnalysisNS
             if (blur)
                 grayFrame = smoothedGrayFrame;
             //binarize
-            CvInvoke.cvAdaptiveThreshold(grayFrame, grayFrame, 255, Emgu.CV.CvEnum.ADAPTIVE_THRESHOLD_TYPE.CV_ADAPTIVE_THRESH_MEAN_C, Emgu.CV.CvEnum.THRESH.CV_THRESH_BINARY, adaptiveThresholdBlockSize + adaptiveThresholdBlockSize % 2 + 1, adaptiveThresholdParameter);
+            CvInvoke.cvAdaptiveThreshold(grayFrame, grayFrame, 255, ADAPTIVE_THRESHOLD_TYPE.CV_ADAPTIVE_THRESH_MEAN_C, THRESH.CV_THRESH_BINARY, 
+                adaptiveThresholdBlockSize + adaptiveThresholdBlockSize % 2 + 1, adaptiveThresholdParameter);
             //
             grayFrame._Not();
             //
@@ -80,16 +80,17 @@ namespace ContourAnalysisNS
                 cannyFrame = cannyFrame.Dilate(3);
 
             //find contours
-            var sourceContours = grayFrame.FindContours(Emgu.CV.CvEnum.CHAIN_APPROX_METHOD.CV_CHAIN_APPROX_NONE, Emgu.CV.CvEnum.RETR_TYPE.CV_RETR_LIST);
+            var sourceContours = grayFrame.FindContours(CHAIN_APPROX_METHOD.CV_CHAIN_APPROX_NONE, RETR_TYPE.CV_RETR_LIST);
             //filter contours
-            contours = FilterContours(sourceContours, cannyFrame, grayFrame.Width, grayFrame.Height);
+            contours = FilterContours(sourceContours, cannyFrame, grayFrame.Width, grayFrame.Height, enableMaxContour);
+            //contours = ConvertContours(sourceContours);
             //find templates
             lock (foundTemplates)
                 foundTemplates.Clear();
             samples.Clear();
 
             lock (templates)
-            Parallel.ForEach<Contour<Point>>(contours, (contour) =>
+            Parallel.ForEach(contours, contour =>
             {
                 var arr = contour.ToArray();
                 Template sample = new Template(arr, contour.Area, samples.templateSize);
@@ -113,7 +114,7 @@ namespace ContourAnalysisNS
         private static void FilterByIntersection(ref List<FoundTemplateDesc> templates)
         {
             //sort by area
-            templates.Sort(new Comparison<FoundTemplateDesc>((t1, t2) => -t1.sample.contour.SourceBoundingRect.Area().CompareTo(t2.sample.contour.SourceBoundingRect.Area())));
+            templates.Sort(((t1, t2) => -t1.sample.contour.SourceBoundingRect.Area().CompareTo(t2.sample.contour.SourceBoundingRect.Area())));
             //exclude templates inside other templates
             HashSet<int> toDel = new HashSet<int>();
             for (int i = 0; i < templates.Count; i++)
@@ -148,16 +149,31 @@ namespace ContourAnalysisNS
             templates = newTemplates;
         }
 
-        private List<Contour<Point>> FilterContours(Contour<Point> contours, Image<Gray, byte> cannyFrame, int frameWidth, int frameHeight)
+        private List<Contour<Point>> ConvertContours(Contour<Point> contours)
         {
-            int maxArea = frameWidth * frameHeight / 5;
             var c = contours;
             List<Contour<Point>> result = new List<Contour<Point>>();
             while (c != null)
             {
+                result.Add(c);
+                c = c.HNext;
+            }
+            return result;
+        }
+
+        private List<Contour<Point>> FilterContours(Contour<Point> contours, Image<Gray, byte> cannyFrame, 
+            int frameWidth, int frameHeight, bool enableMaxContour = false)
+        {
+            int maxArea = frameWidth * frameHeight / 5;
+            var c = contours;
+            List<Contour<Point>> result = new List<Contour<Point>>();
+
+            while (c != null)
+            {
                 if (filterContoursBySize)
                     if (c.Total < minContourLength ||
-                        c.Area < minContourArea || c.Area > maxArea ||
+                        c.Area < minContourArea ||
+                        (enableMaxContour ? false : c.Area > maxArea) ||
                         c.Area / c.Total <= minFormFactor)
                         goto next;
 
