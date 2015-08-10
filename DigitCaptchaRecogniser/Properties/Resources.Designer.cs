@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DigitCaptchaRecogniser.Properties
+namespace AppSettings
 {
 
 

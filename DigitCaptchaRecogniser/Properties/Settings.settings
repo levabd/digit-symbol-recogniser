@@ -35,5 +35,23 @@
     <Setting Name="GaussThreshold" Type="System.Byte" Scope="Application">
       <Value Profile="(Default)">110</Value>
     </Setting>
+    <Setting Name="ContourObjectThreshold" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">50</Value>
+    </Setting>
+    <Setting Name="ContoursRatio" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">3</Value>
+    </Setting>
+    <Setting Name="CorrelationWidth" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">200</Value>
+    </Setting>
+    <Setting Name="CorrelationHeight" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+    <Setting Name="TemplatesFile" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">digits.bin</Value>
+    </Setting>
+    <Setting Name="set" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>

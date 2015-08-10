@@ -20,6 +20,7 @@ namespace ContourAnalysisNS
     public class Template
     {
         public string name;
+        public string name1;
         public Contour contour;
         public Contour autoCorr;
         public Point startPoint;

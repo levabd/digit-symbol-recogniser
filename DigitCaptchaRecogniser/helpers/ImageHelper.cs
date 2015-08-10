@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.IO;
 using AForge;
 using AForge.Imaging;
 using AForge.Imaging.Filters;

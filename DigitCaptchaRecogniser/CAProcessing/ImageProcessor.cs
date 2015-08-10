@@ -84,31 +84,69 @@ namespace ContourAnalysisNS
             //filter contours
             contours = FilterContours(sourceContours, cannyFrame, grayFrame.Width, grayFrame.Height, enableMaxContour);
             //contours = ConvertContours(sourceContours);
+            foundTemplates = FindTemplates(contours);
+        }
+
+        public List<FoundTemplateDesc> FindTemplates(List<Contour<Point>> inputContours)
+        {
+            List<FoundTemplateDesc> foundTemplatesInput = new List<FoundTemplateDesc>();
+
             //find templates
-            lock (foundTemplates)
-                foundTemplates.Clear();
+            lock (foundTemplatesInput)
+                foundTemplatesInput.Clear();
             samples.Clear();
 
             lock (templates)
-            Parallel.ForEach(contours, contour =>
+                Parallel.ForEach(inputContours, contour =>
+                {
+                    var arr = contour.ToArray();
+                    Template sample = new Template(arr, contour.Area, samples.templateSize);
+                    //sample.name = 
+                    lock (samples)
+                        samples.Add(sample);
+
+                    if (!onlyFindContours)
+                    {
+                        FoundTemplateDesc desc = finder.FindTemplate(templates, sample);
+
+                        if (desc != null)
+                            lock (foundTemplatesInput)
+                                foundTemplatesInput.Add(desc);
+                    }
+                }
+                    );
+            //
+            FilterByIntersection(ref foundTemplatesInput);
+
+            return foundTemplatesInput;
+        }
+
+        public List<FoundTemplateDesc> FindTemplatesNonParalel(List<Contour<Point>> inputContours)
+        {
+            List<FoundTemplateDesc> foundTemplatesInput = new List<FoundTemplateDesc>();
+
+            //find templates
+            foundTemplatesInput.Clear();
+            samples.Clear();
+
+            foreach (var contour in inputContours)
             {
                 var arr = contour.ToArray();
-                Template sample = new Template(arr, contour.Area, samples.templateSize);
-                lock (samples)
+                    Template sample = new Template(arr, contour.Area, samples.templateSize);
                     samples.Add(sample);
 
-                if (!onlyFindContours)
-                {
-                    FoundTemplateDesc desc = finder.FindTemplate(templates, sample);
+                    if (!onlyFindContours)
+                    {
+                        FoundTemplateDesc desc = finder.FindTemplate(templates, sample);
 
-                    if (desc != null)
-                        lock (foundTemplates)
-                            foundTemplates.Add(desc);
-                }
+                        if (desc != null)
+                            foundTemplatesInput.Add(desc);
+                    }
             }
-            );
-            //
-            FilterByIntersection(ref foundTemplates);
+
+            FilterByIntersection(ref foundTemplatesInput);
+
+            return foundTemplatesInput;
         }
 
         private static void FilterByIntersection(ref List<FoundTemplateDesc> templates)
@@ -162,9 +200,9 @@ namespace ContourAnalysisNS
         }
 
         private List<Contour<Point>> FilterContours(Contour<Point> contours, Image<Gray, byte> cannyFrame, 
-            int frameWidth, int frameHeight, bool enableMaxContour = false)
+            int frameWidth, int frameHeight, bool enableBigContour = false)
         {
-            int maxArea = frameWidth * frameHeight / 5;
+            int maxArea = enableBigContour ? frameWidth * frameHeight / 2  : frameWidth * frameHeight / 5;
             var c = contours;
             List<Contour<Point>> result = new List<Contour<Point>>();
 
@@ -173,7 +211,7 @@ namespace ContourAnalysisNS
                 if (filterContoursBySize)
                     if (c.Total < minContourLength ||
                         c.Area < minContourArea ||
-                        (enableMaxContour ? false : c.Area > maxArea) ||
+                        c.Area > maxArea ||
                         c.Area / c.Total <= minFormFactor)
                         goto next;
 
