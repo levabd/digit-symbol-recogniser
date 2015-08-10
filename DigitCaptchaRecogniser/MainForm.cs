@@ -83,7 +83,7 @@ namespace DigitCaptchaRecogniser
                 _processor.finder.maxRotateAngle = 2 * Math.PI; //true ? Math.PI : Math.PI / 4;
                 _processor.minContourArea = 10;
                 _processor.minContourLength = 15;
-                _processor.finder.maxACFDescriptorDeviation = 10; //Auto correlation deviation
+                _processor.finder.maxACFDescriptorDeviation = 4; //Auto correlation deviation
                 _processor.finder.minACF = 0.96;
                 _processor.finder.minICF = 0.85;
                 _processor.blur = false;
@@ -161,7 +161,7 @@ namespace DigitCaptchaRecogniser
         {
             if (contours.Count > 0)
             {
-                List<FoundTemplateDesc> recognised = proc.FindTemplatesNonParalel(contours);
+                List<FoundTemplateDesc> recognisedDigits = proc.FindTemplatesNonParalel(contours);
                 _samples = proc.samples;
 
                 Bitmap[] correlations = new Bitmap[5];
@@ -182,11 +182,17 @@ namespace DigitCaptchaRecogniser
                 correlation4.Image = correlations[3];
                 correlation5.Image = correlations[4];
 
-                digit1Text.Text = (recognisedText[0] < 0) ? "*" : recognised[0].template.name;
-                digit2Text.Text = (recognisedText[1] < 0) ? "*" : recognised[1].template.name;
-                digit3Text.Text = (recognisedText[2] < 0) ? "*" : recognised[2].template.name;
-                digit4Text.Text = (recognisedText[3] < 0) ? "*" : recognised[3].template.name;
-                digit5Text.Text = (recognisedText[4] < 0) ? "*" : recognised[4].template.name;
+                for(int recognisedDigitCounter = 0; recognisedDigitCounter < recognisedDigits.Count; recognisedDigitCounter++)
+                {
+                    recognisedText[recognisedDigitCounter] =
+                        (recognisedDigits[recognisedDigitCounter] == null) ? -1 : recognisedDigits[recognisedDigitCounter].template.name.SafeToInt(-1);
+                }
+
+                digit1Text.Text = (recognisedText[0] < 0) ? "*" : recognisedText[0].ToString();
+                digit2Text.Text = (recognisedText[1] < 0) ? "*" : recognisedText[1].ToString();
+                digit3Text.Text = (recognisedText[2] < 0) ? "*" : recognisedText[2].ToString();
+                digit4Text.Text = (recognisedText[3] < 0) ? "*" : recognisedText[3].ToString();
+                digit5Text.Text = (recognisedText[4] < 0) ? "*" : recognisedText[4].ToString();
             }
         }
 

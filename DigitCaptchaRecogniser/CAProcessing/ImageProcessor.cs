@@ -138,21 +138,39 @@ namespace ContourAnalysisNS
                     if (!onlyFindContours)
                     {
                         FoundTemplateDesc desc = finder.FindTemplate(templates, sample);
-
-                        if (desc != null)
-                            foundTemplatesInput.Add(desc);
+                        //if (desc != null)
+                        foundTemplatesInput.Add(desc);
                     }
             }
 
-            FilterByIntersection(ref foundTemplatesInput);
+            //FilterByIntersectionWithNull(ref foundTemplatesInput);
 
             return foundTemplatesInput;
         }
 
-        private static void FilterByIntersection(ref List<FoundTemplateDesc> templates)
+        private static void FilterByIntersectionWithNull(ref List<FoundTemplateDesc> templates)
+        {
+            var toDel = GetTemplatesToDel(templates);
+            List<FoundTemplateDesc> newTemplates = new List<FoundTemplateDesc>();
+            for (int i = 0; i < templates.Count; i++)
+            {
+                if (!toDel.Contains(i))
+                {
+                    newTemplates.Add(templates[i]);
+                }
+                else
+                {
+                    newTemplates.Add(null);
+                }
+            }
+            templates = newTemplates;
+        }
+
+        private static HashSet<int> GetTemplatesToDel(List<FoundTemplateDesc> templates)
         {
             //sort by area
-            templates.Sort(((t1, t2) => -t1.sample.contour.SourceBoundingRect.Area().CompareTo(t2.sample.contour.SourceBoundingRect.Area())));
+            templates.Sort(
+                ((t1, t2) => -t1.sample.contour.SourceBoundingRect.Area().CompareTo(t2.sample.contour.SourceBoundingRect.Area())));
             //exclude templates inside other templates
             HashSet<int> toDel = new HashSet<int>();
             for (int i = 0; i < templates.Count; i++)
@@ -167,7 +185,7 @@ namespace ContourAnalysisNS
                     if (bigRect.Contains(templates[j].sample.contour.SourceBoundingRect))
                     {
                         double a = templates[j].sample.contour.SourceBoundingRect.Area();
-                        if (a / bigArea > 0.9d)
+                        if (a/bigArea > 0.9d)
                         {
                             //choose template by rate
                             if (templates[i].rate > templates[j].rate)
@@ -175,11 +193,17 @@ namespace ContourAnalysisNS
                             else
                                 toDel.Add(i);
                         }
-                        else//delete tempate
+                        else //delete tempate
                             toDel.Add(j);
                     }
                 }
             }
+            return toDel;
+        }
+
+        private static void FilterByIntersection(ref List<FoundTemplateDesc> templates)
+        {
+            var toDel = GetTemplatesToDel(templates);
             List<FoundTemplateDesc> newTemplates = new List<FoundTemplateDesc>();
             for (int i = 0; i < templates.Count; i++)
                 if (!toDel.Contains(i))
