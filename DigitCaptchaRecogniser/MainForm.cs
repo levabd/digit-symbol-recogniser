@@ -80,17 +80,17 @@ namespace DigitCaptchaRecogniser
             try
             {
                 _processor.equalizeHist = false;
-                _processor.finder.maxRotateAngle = 2 * Math.PI; //true ? Math.PI : Math.PI / 4;
-                _processor.minContourArea = 10;
-                _processor.minContourLength = 15;
-                _processor.finder.maxACFDescriptorDeviation = 4; //Auto correlation deviation
-                _processor.finder.minACF = 0.96;
-                _processor.finder.minICF = 0.85;
+                _processor.finder.maxRotateAngle = differences69.Checked ? Math.PI : Math.PI / 4;
+                _processor.minContourArea = _appSettings.MinContourArea;
+                _processor.minContourLength = _appSettings.MinContourLength;
+                _processor.finder.maxACFDescriptorDeviation = _appSettings.MaxACFDescriptorDeviation; //Auto correlation deviation
+                _processor.finder.minACF = _appSettings.MinACF;
+                _processor.finder.minICF = _appSettings.MinICF;
                 _processor.blur = false;
                 _processor.noiseFilter = true;
-                _processor.cannyThreshold = 50;
-                _processor.adaptiveThresholdBlockSize = 6;
-                _processor.adaptiveThresholdParameter = 1; //false ? 1.5 : 0.5;
+                _processor.cannyThreshold = _appSettings.СannyThreshold;
+                _processor.adaptiveThresholdBlockSize = _appSettings.AdaptiveThresholdBlockSize;
+                _processor.adaptiveThresholdParameter = _appSettings.AdaptiveThresholdParameter; //false ? 1.5 : 0.5;
 
                 contours = DisplayContour(_processor, digits);
             }

@@ -80,6 +80,7 @@
             this.buttonTeach = new System.Windows.Forms.Button();
             this.checkBoxSaveFiles = new System.Windows.Forms.CheckBox();
             this.openImageDialog = new System.Windows.Forms.OpenFileDialog();
+            this.differences69 = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kuwaharaImage)).BeginInit();
@@ -740,6 +741,7 @@
             // panel2
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.panel2, 4);
+            this.panel2.Controls.Add(this.differences69);
             this.panel2.Controls.Add(this.buttonTeach);
             this.panel2.Controls.Add(this.checkBoxSaveFiles);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -751,11 +753,11 @@
             // buttonTeach
             // 
             this.buttonTeach.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonTeach.Location = new System.Drawing.Point(949, 3);
+            this.buttonTeach.Location = new System.Drawing.Point(891, 3);
             this.buttonTeach.Name = "buttonTeach";
-            this.buttonTeach.Size = new System.Drawing.Size(75, 23);
+            this.buttonTeach.Size = new System.Drawing.Size(133, 23);
             this.buttonTeach.TabIndex = 1;
-            this.buttonTeach.Text = "Обучить";
+            this.buttonTeach.Text = "Train ACF recogniser";
             this.buttonTeach.UseVisualStyleBackColor = true;
             this.buttonTeach.Click += new System.EventHandler(this.buttonTeach_Click);
             // 
@@ -765,9 +767,9 @@
             this.checkBoxSaveFiles.AutoSize = true;
             this.checkBoxSaveFiles.Location = new System.Drawing.Point(4, 9);
             this.checkBoxSaveFiles.Name = "checkBoxSaveFiles";
-            this.checkBoxSaveFiles.Size = new System.Drawing.Size(116, 17);
+            this.checkBoxSaveFiles.Size = new System.Drawing.Size(72, 17);
             this.checkBoxSaveFiles.TabIndex = 0;
-            this.checkBoxSaveFiles.Text = "Сохранять файлы";
+            this.checkBoxSaveFiles.Text = "Save files";
             this.checkBoxSaveFiles.UseVisualStyleBackColor = true;
             // 
             // openImageDialog
@@ -775,6 +777,19 @@
             this.openImageDialog.Filter = "\"All Images|*.jpeg;*.jpg;*.bmp;*.png;*.gif;*.tiff\"";
             this.openImageDialog.RestoreDirectory = true;
             this.openImageDialog.Title = "Open image for recognition";
+            // 
+            // differences69
+            // 
+            this.differences69.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.differences69.AutoSize = true;
+            this.differences69.Checked = true;
+            this.differences69.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.differences69.Location = new System.Drawing.Point(688, 7);
+            this.differences69.Name = "differences69";
+            this.differences69.Size = new System.Drawing.Size(197, 17);
+            this.differences69.TabIndex = 2;
+            this.differences69.Text = "Enable differences between 6 and 9";
+            this.differences69.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -883,6 +898,7 @@
         private System.Windows.Forms.TextBox digit2Text;
         private System.Windows.Forms.TextBox digit1Text;
         private System.Windows.Forms.Button buttonTeach;
+        private System.Windows.Forms.CheckBox differences69;
     }
 }
 
