@@ -77,10 +77,10 @@
             this.correlation1 = new System.Windows.Forms.PictureBox();
             this.correlation2 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.differences69 = new System.Windows.Forms.CheckBox();
             this.buttonTeach = new System.Windows.Forms.Button();
             this.checkBoxSaveFiles = new System.Windows.Forms.CheckBox();
             this.openImageDialog = new System.Windows.Forms.OpenFileDialog();
-            this.differences69 = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kuwaharaImage)).BeginInit();
@@ -750,6 +750,19 @@
             this.panel2.Size = new System.Drawing.Size(1027, 29);
             this.panel2.TabIndex = 17;
             // 
+            // differences69
+            // 
+            this.differences69.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.differences69.AutoSize = true;
+            this.differences69.Checked = true;
+            this.differences69.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.differences69.Location = new System.Drawing.Point(688, 7);
+            this.differences69.Name = "differences69";
+            this.differences69.Size = new System.Drawing.Size(197, 17);
+            this.differences69.TabIndex = 2;
+            this.differences69.Text = "Enable differences between 6 and 9";
+            this.differences69.UseVisualStyleBackColor = true;
+            // 
             // buttonTeach
             // 
             this.buttonTeach.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -777,19 +790,6 @@
             this.openImageDialog.Filter = "\"All Images|*.jpeg;*.jpg;*.bmp;*.png;*.gif;*.tiff\"";
             this.openImageDialog.RestoreDirectory = true;
             this.openImageDialog.Title = "Open image for recognition";
-            // 
-            // differences69
-            // 
-            this.differences69.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.differences69.AutoSize = true;
-            this.differences69.Checked = true;
-            this.differences69.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.differences69.Location = new System.Drawing.Point(688, 7);
-            this.differences69.Name = "differences69";
-            this.differences69.Size = new System.Drawing.Size(197, 17);
-            this.differences69.TabIndex = 2;
-            this.differences69.Text = "Enable differences between 6 and 9";
-            this.differences69.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
