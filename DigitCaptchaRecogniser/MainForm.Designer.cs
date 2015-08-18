@@ -35,16 +35,11 @@
             this.digit3Text = new System.Windows.Forms.TextBox();
             this.digit2Text = new System.Windows.Forms.TextBox();
             this.digit1Text = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.kuwaharaImage = new System.Windows.Forms.PictureBox();
             this.sourceImage = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.imagePath = new System.Windows.Forms.TextBox();
             this.loadImage = new System.Windows.Forms.Button();
-            this.medianImage = new System.Windows.Forms.PictureBox();
-            this.thresholdImage = new System.Windows.Forms.PictureBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.digit4 = new System.Windows.Forms.PictureBox();
@@ -71,6 +66,8 @@
             this.lastContourDigit1 = new System.Windows.Forms.PictureBox();
             this.lastContourDigit2 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
+            this.correlation4 = new System.Windows.Forms.PictureBox();
+            this.correlation5 = new System.Windows.Forms.PictureBox();
             this.correlation3 = new System.Windows.Forms.PictureBox();
             this.correlation1 = new System.Windows.Forms.PictureBox();
             this.correlation2 = new System.Windows.Forms.PictureBox();
@@ -79,15 +76,11 @@
             this.buttonTeach = new System.Windows.Forms.Button();
             this.checkBoxSaveFiles = new System.Windows.Forms.CheckBox();
             this.openImageDialog = new System.Windows.Forms.OpenFileDialog();
-            this.correlation5 = new System.Windows.Forms.PictureBox();
-            this.correlation4 = new System.Windows.Forms.PictureBox();
+            this.textBoxAllDigits = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kuwaharaImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sourceImage)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.medianImage)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.thresholdImage)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.digit4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.digit5)).BeginInit();
@@ -113,12 +106,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.lastContourDigit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lastContourDigit2)).BeginInit();
             this.tableLayoutPanel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.correlation4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.correlation5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.correlation3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.correlation1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.correlation2)).BeginInit();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.correlation5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.correlation4)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -129,21 +122,17 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel7, 0, 8);
-            this.tableLayoutPanel1.Controls.Add(this.label2, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.kuwaharaImage, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.sourceImage, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.medianImage, 2, 1);
-            this.tableLayoutPanel1.Controls.Add(this.thresholdImage, 3, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label3, 2, 2);
-            this.tableLayoutPanel1.Controls.Add(this.label4, 3, 2);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel4, 0, 5);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel5, 0, 6);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel6, 0, 7);
             this.tableLayoutPanel1.Controls.Add(this.panel2, 0, 9);
+            this.tableLayoutPanel1.Controls.Add(this.label4, 2, 2);
+            this.tableLayoutPanel1.Controls.Add(this.textBoxAllDigits, 2, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -158,7 +147,8 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 18F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1033, 832);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1033, 968);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // tableLayoutPanel7
@@ -176,7 +166,7 @@
             this.tableLayoutPanel7.Controls.Add(this.digit2Text, 1, 0);
             this.tableLayoutPanel7.Controls.Add(this.digit1Text, 0, 0);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(3, 768);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(3, 902);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 1;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -195,7 +185,6 @@
             // 
             // digit4Text
             // 
-            this.digit4Text.Dock = System.Windows.Forms.DockStyle.Fill;
             this.digit4Text.Location = new System.Drawing.Point(618, 3);
             this.digit4Text.Name = "digit4Text";
             this.digit4Text.Size = new System.Drawing.Size(199, 20);
@@ -229,46 +218,26 @@
             this.digit1Text.TabIndex = 0;
             this.digit1Text.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // label2
-            // 
-            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(261, 110);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(252, 20);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "After Kuwahara";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // kuwaharaImage
-            // 
-            this.kuwaharaImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.kuwaharaImage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kuwaharaImage.Location = new System.Drawing.Point(261, 43);
-            this.kuwaharaImage.Name = "kuwaharaImage";
-            this.kuwaharaImage.Size = new System.Drawing.Size(252, 64);
-            this.kuwaharaImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.kuwaharaImage.TabIndex = 6;
-            this.kuwaharaImage.TabStop = false;
-            // 
             // sourceImage
             // 
             this.sourceImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tableLayoutPanel1.SetColumnSpan(this.sourceImage, 2);
             this.sourceImage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.sourceImage.Location = new System.Drawing.Point(3, 43);
             this.sourceImage.Name = "sourceImage";
-            this.sourceImage.Size = new System.Drawing.Size(252, 64);
+            this.sourceImage.Size = new System.Drawing.Size(510, 78);
             this.sourceImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.sourceImage.TabIndex = 5;
             this.sourceImage.TabStop = false;
             // 
             // label1
             // 
+            this.tableLayoutPanel1.SetColumnSpan(this.label1, 2);
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(3, 110);
+            this.label1.Location = new System.Drawing.Point(3, 124);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(252, 20);
+            this.label1.Size = new System.Drawing.Size(510, 20);
             this.label1.TabIndex = 4;
             this.label1.Text = "Source Image";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -306,46 +275,16 @@
             this.loadImage.UseVisualStyleBackColor = true;
             this.loadImage.Click += new System.EventHandler(this.loadImage_Click);
             // 
-            // medianImage
-            // 
-            this.medianImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.medianImage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.medianImage.Location = new System.Drawing.Point(519, 43);
-            this.medianImage.Name = "medianImage";
-            this.medianImage.Size = new System.Drawing.Size(252, 64);
-            this.medianImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.medianImage.TabIndex = 8;
-            this.medianImage.TabStop = false;
-            // 
-            // thresholdImage
-            // 
-            this.thresholdImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.thresholdImage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.thresholdImage.Location = new System.Drawing.Point(777, 43);
-            this.thresholdImage.Name = "thresholdImage";
-            this.thresholdImage.Size = new System.Drawing.Size(253, 64);
-            this.thresholdImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.thresholdImage.TabIndex = 9;
-            this.thresholdImage.TabStop = false;
-            // 
-            // label3
-            // 
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(519, 110);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(252, 20);
-            this.label3.TabIndex = 10;
-            this.label3.Text = "After Median filter";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // label4
             // 
+            this.tableLayoutPanel1.SetColumnSpan(this.label4, 2);
+            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(777, 110);
+            this.label4.Location = new System.Drawing.Point(519, 124);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(253, 20);
+            this.label4.Size = new System.Drawing.Size(511, 20);
             this.label4.TabIndex = 11;
-            this.label4.Text = "Result. After Threshold";
+            this.label4.Text = "Result";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tableLayoutPanel2
@@ -363,12 +302,12 @@
             this.tableLayoutPanel2.Controls.Add(this.digit1, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.digit2, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 133);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 147);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 121F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1027, 121);
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 142F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1027, 145);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // digit4
@@ -377,7 +316,7 @@
             this.digit4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.digit4.Location = new System.Drawing.Point(618, 3);
             this.digit4.Name = "digit4";
-            this.digit4.Size = new System.Drawing.Size(199, 115);
+            this.digit4.Size = new System.Drawing.Size(199, 139);
             this.digit4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.digit4.TabIndex = 13;
             this.digit4.TabStop = false;
@@ -388,7 +327,7 @@
             this.digit5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.digit5.Location = new System.Drawing.Point(823, 3);
             this.digit5.Name = "digit5";
-            this.digit5.Size = new System.Drawing.Size(201, 115);
+            this.digit5.Size = new System.Drawing.Size(201, 139);
             this.digit5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.digit5.TabIndex = 12;
             this.digit5.TabStop = false;
@@ -399,7 +338,7 @@
             this.digit3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.digit3.Location = new System.Drawing.Point(413, 3);
             this.digit3.Name = "digit3";
-            this.digit3.Size = new System.Drawing.Size(199, 115);
+            this.digit3.Size = new System.Drawing.Size(199, 139);
             this.digit3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.digit3.TabIndex = 11;
             this.digit3.TabStop = false;
@@ -410,7 +349,7 @@
             this.digit1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.digit1.Location = new System.Drawing.Point(3, 3);
             this.digit1.Name = "digit1";
-            this.digit1.Size = new System.Drawing.Size(199, 115);
+            this.digit1.Size = new System.Drawing.Size(199, 139);
             this.digit1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.digit1.TabIndex = 10;
             this.digit1.TabStop = false;
@@ -421,7 +360,7 @@
             this.digit2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.digit2.Location = new System.Drawing.Point(208, 3);
             this.digit2.Name = "digit2";
-            this.digit2.Size = new System.Drawing.Size(199, 115);
+            this.digit2.Size = new System.Drawing.Size(199, 139);
             this.digit2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.digit2.TabIndex = 9;
             this.digit2.TabStop = false;
@@ -441,12 +380,12 @@
             this.tableLayoutPanel3.Controls.Add(this.gaussDigit1, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.gaussDigit2, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 260);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 298);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 121F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1027, 121);
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 142F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1027, 145);
             this.tableLayoutPanel3.TabIndex = 12;
             // 
             // gaussDigit4
@@ -455,7 +394,7 @@
             this.gaussDigit4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gaussDigit4.Location = new System.Drawing.Point(618, 3);
             this.gaussDigit4.Name = "gaussDigit4";
-            this.gaussDigit4.Size = new System.Drawing.Size(199, 115);
+            this.gaussDigit4.Size = new System.Drawing.Size(199, 139);
             this.gaussDigit4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.gaussDigit4.TabIndex = 13;
             this.gaussDigit4.TabStop = false;
@@ -466,7 +405,7 @@
             this.gaussDigit5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gaussDigit5.Location = new System.Drawing.Point(823, 3);
             this.gaussDigit5.Name = "gaussDigit5";
-            this.gaussDigit5.Size = new System.Drawing.Size(201, 115);
+            this.gaussDigit5.Size = new System.Drawing.Size(201, 139);
             this.gaussDigit5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.gaussDigit5.TabIndex = 12;
             this.gaussDigit5.TabStop = false;
@@ -477,7 +416,7 @@
             this.gaussDigit3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gaussDigit3.Location = new System.Drawing.Point(413, 3);
             this.gaussDigit3.Name = "gaussDigit3";
-            this.gaussDigit3.Size = new System.Drawing.Size(199, 115);
+            this.gaussDigit3.Size = new System.Drawing.Size(199, 139);
             this.gaussDigit3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.gaussDigit3.TabIndex = 11;
             this.gaussDigit3.TabStop = false;
@@ -488,7 +427,7 @@
             this.gaussDigit1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gaussDigit1.Location = new System.Drawing.Point(3, 3);
             this.gaussDigit1.Name = "gaussDigit1";
-            this.gaussDigit1.Size = new System.Drawing.Size(199, 115);
+            this.gaussDigit1.Size = new System.Drawing.Size(199, 139);
             this.gaussDigit1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.gaussDigit1.TabIndex = 10;
             this.gaussDigit1.TabStop = false;
@@ -499,7 +438,7 @@
             this.gaussDigit2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gaussDigit2.Location = new System.Drawing.Point(208, 3);
             this.gaussDigit2.Name = "gaussDigit2";
-            this.gaussDigit2.Size = new System.Drawing.Size(199, 115);
+            this.gaussDigit2.Size = new System.Drawing.Size(199, 139);
             this.gaussDigit2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.gaussDigit2.TabIndex = 9;
             this.gaussDigit2.TabStop = false;
@@ -519,12 +458,12 @@
             this.tableLayoutPanel4.Controls.Add(this.contourDigit1, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.contourDigit2, 0, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 387);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 449);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 121F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(1027, 121);
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 142F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(1027, 145);
             this.tableLayoutPanel4.TabIndex = 13;
             // 
             // contourDigit4
@@ -533,7 +472,7 @@
             this.contourDigit4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.contourDigit4.Location = new System.Drawing.Point(618, 3);
             this.contourDigit4.Name = "contourDigit4";
-            this.contourDigit4.Size = new System.Drawing.Size(199, 115);
+            this.contourDigit4.Size = new System.Drawing.Size(199, 139);
             this.contourDigit4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.contourDigit4.TabIndex = 13;
             this.contourDigit4.TabStop = false;
@@ -544,7 +483,7 @@
             this.contourDigit5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.contourDigit5.Location = new System.Drawing.Point(823, 3);
             this.contourDigit5.Name = "contourDigit5";
-            this.contourDigit5.Size = new System.Drawing.Size(201, 115);
+            this.contourDigit5.Size = new System.Drawing.Size(201, 139);
             this.contourDigit5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.contourDigit5.TabIndex = 12;
             this.contourDigit5.TabStop = false;
@@ -555,7 +494,7 @@
             this.contourDigit3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.contourDigit3.Location = new System.Drawing.Point(413, 3);
             this.contourDigit3.Name = "contourDigit3";
-            this.contourDigit3.Size = new System.Drawing.Size(199, 115);
+            this.contourDigit3.Size = new System.Drawing.Size(199, 139);
             this.contourDigit3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.contourDigit3.TabIndex = 11;
             this.contourDigit3.TabStop = false;
@@ -566,7 +505,7 @@
             this.contourDigit1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.contourDigit1.Location = new System.Drawing.Point(3, 3);
             this.contourDigit1.Name = "contourDigit1";
-            this.contourDigit1.Size = new System.Drawing.Size(199, 115);
+            this.contourDigit1.Size = new System.Drawing.Size(199, 139);
             this.contourDigit1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.contourDigit1.TabIndex = 10;
             this.contourDigit1.TabStop = false;
@@ -577,7 +516,7 @@
             this.contourDigit2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.contourDigit2.Location = new System.Drawing.Point(208, 3);
             this.contourDigit2.Name = "contourDigit2";
-            this.contourDigit2.Size = new System.Drawing.Size(199, 115);
+            this.contourDigit2.Size = new System.Drawing.Size(199, 139);
             this.contourDigit2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.contourDigit2.TabIndex = 9;
             this.contourDigit2.TabStop = false;
@@ -597,12 +536,12 @@
             this.tableLayoutPanel5.Controls.Add(this.lastContourDigit1, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.lastContourDigit2, 0, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 514);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 600);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 121F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(1027, 121);
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 142F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(1027, 145);
             this.tableLayoutPanel5.TabIndex = 14;
             // 
             // lastContourDigit4
@@ -611,7 +550,7 @@
             this.lastContourDigit4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lastContourDigit4.Location = new System.Drawing.Point(618, 3);
             this.lastContourDigit4.Name = "lastContourDigit4";
-            this.lastContourDigit4.Size = new System.Drawing.Size(199, 115);
+            this.lastContourDigit4.Size = new System.Drawing.Size(199, 139);
             this.lastContourDigit4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.lastContourDigit4.TabIndex = 13;
             this.lastContourDigit4.TabStop = false;
@@ -622,7 +561,7 @@
             this.lastContourDigit5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lastContourDigit5.Location = new System.Drawing.Point(823, 3);
             this.lastContourDigit5.Name = "lastContourDigit5";
-            this.lastContourDigit5.Size = new System.Drawing.Size(201, 115);
+            this.lastContourDigit5.Size = new System.Drawing.Size(201, 139);
             this.lastContourDigit5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.lastContourDigit5.TabIndex = 12;
             this.lastContourDigit5.TabStop = false;
@@ -633,7 +572,7 @@
             this.lastContourDigit3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lastContourDigit3.Location = new System.Drawing.Point(413, 3);
             this.lastContourDigit3.Name = "lastContourDigit3";
-            this.lastContourDigit3.Size = new System.Drawing.Size(199, 115);
+            this.lastContourDigit3.Size = new System.Drawing.Size(199, 139);
             this.lastContourDigit3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.lastContourDigit3.TabIndex = 11;
             this.lastContourDigit3.TabStop = false;
@@ -644,7 +583,7 @@
             this.lastContourDigit1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lastContourDigit1.Location = new System.Drawing.Point(3, 3);
             this.lastContourDigit1.Name = "lastContourDigit1";
-            this.lastContourDigit1.Size = new System.Drawing.Size(199, 115);
+            this.lastContourDigit1.Size = new System.Drawing.Size(199, 139);
             this.lastContourDigit1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.lastContourDigit1.TabIndex = 10;
             this.lastContourDigit1.TabStop = false;
@@ -655,7 +594,7 @@
             this.lastContourDigit2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lastContourDigit2.Location = new System.Drawing.Point(208, 3);
             this.lastContourDigit2.Name = "lastContourDigit2";
-            this.lastContourDigit2.Size = new System.Drawing.Size(199, 115);
+            this.lastContourDigit2.Size = new System.Drawing.Size(199, 139);
             this.lastContourDigit2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.lastContourDigit2.TabIndex = 9;
             this.lastContourDigit2.TabStop = false;
@@ -675,13 +614,35 @@
             this.tableLayoutPanel6.Controls.Add(this.correlation1, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.correlation2, 0, 0);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 641);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 751);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 1;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 121F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(1027, 121);
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 142F));
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(1027, 145);
             this.tableLayoutPanel6.TabIndex = 15;
+            // 
+            // correlation4
+            // 
+            this.correlation4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.correlation4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.correlation4.Location = new System.Drawing.Point(618, 3);
+            this.correlation4.Name = "correlation4";
+            this.correlation4.Size = new System.Drawing.Size(199, 139);
+            this.correlation4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.correlation4.TabIndex = 14;
+            this.correlation4.TabStop = false;
+            // 
+            // correlation5
+            // 
+            this.correlation5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.correlation5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.correlation5.Location = new System.Drawing.Point(823, 3);
+            this.correlation5.Name = "correlation5";
+            this.correlation5.Size = new System.Drawing.Size(201, 139);
+            this.correlation5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.correlation5.TabIndex = 13;
+            this.correlation5.TabStop = false;
             // 
             // correlation3
             // 
@@ -689,7 +650,7 @@
             this.correlation3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.correlation3.Location = new System.Drawing.Point(413, 3);
             this.correlation3.Name = "correlation3";
-            this.correlation3.Size = new System.Drawing.Size(199, 115);
+            this.correlation3.Size = new System.Drawing.Size(199, 139);
             this.correlation3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.correlation3.TabIndex = 12;
             this.correlation3.TabStop = false;
@@ -700,7 +661,7 @@
             this.correlation1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.correlation1.Location = new System.Drawing.Point(3, 3);
             this.correlation1.Name = "correlation1";
-            this.correlation1.Size = new System.Drawing.Size(199, 115);
+            this.correlation1.Size = new System.Drawing.Size(199, 139);
             this.correlation1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.correlation1.TabIndex = 10;
             this.correlation1.TabStop = false;
@@ -711,7 +672,7 @@
             this.correlation2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.correlation2.Location = new System.Drawing.Point(208, 3);
             this.correlation2.Name = "correlation2";
-            this.correlation2.Size = new System.Drawing.Size(199, 115);
+            this.correlation2.Size = new System.Drawing.Size(199, 139);
             this.correlation2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.correlation2.TabIndex = 9;
             this.correlation2.TabStop = false;
@@ -723,9 +684,9 @@
             this.panel2.Controls.Add(this.buttonTeach);
             this.panel2.Controls.Add(this.checkBoxSaveFiles);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(3, 800);
+            this.panel2.Location = new System.Drawing.Point(3, 934);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1027, 29);
+            this.panel2.Size = new System.Drawing.Size(1027, 31);
             this.panel2.TabIndex = 17;
             // 
             // differences69
@@ -734,7 +695,7 @@
             this.differences69.AutoSize = true;
             this.differences69.Checked = true;
             this.differences69.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.differences69.Location = new System.Drawing.Point(688, 7);
+            this.differences69.Location = new System.Drawing.Point(688, 9);
             this.differences69.Name = "differences69";
             this.differences69.Size = new System.Drawing.Size(197, 17);
             this.differences69.TabIndex = 2;
@@ -744,7 +705,7 @@
             // buttonTeach
             // 
             this.buttonTeach.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonTeach.Location = new System.Drawing.Point(891, 3);
+            this.buttonTeach.Location = new System.Drawing.Point(891, 5);
             this.buttonTeach.Name = "buttonTeach";
             this.buttonTeach.Size = new System.Drawing.Size(133, 23);
             this.buttonTeach.TabIndex = 1;
@@ -756,7 +717,7 @@
             // 
             this.checkBoxSaveFiles.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.checkBoxSaveFiles.AutoSize = true;
-            this.checkBoxSaveFiles.Location = new System.Drawing.Point(4, 9);
+            this.checkBoxSaveFiles.Location = new System.Drawing.Point(4, 11);
             this.checkBoxSaveFiles.Name = "checkBoxSaveFiles";
             this.checkBoxSaveFiles.Size = new System.Drawing.Size(72, 17);
             this.checkBoxSaveFiles.TabIndex = 0;
@@ -769,45 +730,31 @@
             this.openImageDialog.RestoreDirectory = true;
             this.openImageDialog.Title = "Open image for recognition";
             // 
-            // correlation5
+            // textBoxAllDigits
             // 
-            this.correlation5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.correlation5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.correlation5.Location = new System.Drawing.Point(823, 3);
-            this.correlation5.Name = "correlation5";
-            this.correlation5.Size = new System.Drawing.Size(201, 115);
-            this.correlation5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.correlation5.TabIndex = 13;
-            this.correlation5.TabStop = false;
-            // 
-            // correlation4
-            // 
-            this.correlation4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.correlation4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.correlation4.Location = new System.Drawing.Point(618, 3);
-            this.correlation4.Name = "correlation4";
-            this.correlation4.Size = new System.Drawing.Size(199, 115);
-            this.correlation4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.correlation4.TabIndex = 14;
-            this.correlation4.TabStop = false;
+            this.tableLayoutPanel1.SetColumnSpan(this.textBoxAllDigits, 2);
+            this.textBoxAllDigits.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxAllDigits.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxAllDigits.Location = new System.Drawing.Point(519, 43);
+            this.textBoxAllDigits.Name = "textBoxAllDigits";
+            this.textBoxAllDigits.Size = new System.Drawing.Size(511, 80);
+            this.textBoxAllDigits.TabIndex = 18;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1033, 832);
+            this.ClientSize = new System.Drawing.Size(1033, 968);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "MainForm";
             this.Text = "Digit Captcha Recogniser";
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel7.ResumeLayout(false);
             this.tableLayoutPanel7.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kuwaharaImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sourceImage)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.medianImage)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.thresholdImage)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.digit4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.digit5)).EndInit();
@@ -833,13 +780,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.lastContourDigit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lastContourDigit2)).EndInit();
             this.tableLayoutPanel6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.correlation4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.correlation5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.correlation3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.correlation1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.correlation2)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.correlation5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.correlation4)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -852,12 +799,8 @@
         private System.Windows.Forms.TextBox imagePath;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.OpenFileDialog openImageDialog;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.PictureBox kuwaharaImage;
         private System.Windows.Forms.PictureBox sourceImage;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.PictureBox thresholdImage;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.PictureBox digit4;
         private System.Windows.Forms.PictureBox digit5;
@@ -876,7 +819,6 @@
         private System.Windows.Forms.PictureBox contourDigit3;
         private System.Windows.Forms.PictureBox contourDigit1;
         private System.Windows.Forms.PictureBox contourDigit2;
-        private System.Windows.Forms.PictureBox medianImage;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.PictureBox lastContourDigit4;
@@ -899,6 +841,7 @@
         private System.Windows.Forms.CheckBox differences69;
         private System.Windows.Forms.PictureBox correlation5;
         private System.Windows.Forms.PictureBox correlation4;
+        private System.Windows.Forms.TextBox textBoxAllDigits;
     }
 }
 

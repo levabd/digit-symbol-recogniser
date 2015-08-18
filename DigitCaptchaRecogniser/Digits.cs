@@ -43,6 +43,11 @@ namespace DigitCaptchaRecogniser
             get { return _contour; }
         }
 
+        public Template ContourTemplate
+        {
+            get { return _contourTemplate; }
+        }
+
         public Image FilledContour
         {
             get { return _filledContour; }
@@ -64,6 +69,11 @@ namespace DigitCaptchaRecogniser
             _cifre = -1;
             _digit = image;
             _recognised = false;
+        }
+
+        public void Kuwahara(int kuwaharaCore)
+        {
+            _digit = _digit.Kuwahara(kuwaharaCore).Kuwahara(kuwaharaCore);
         }
 
         public void HitAndMiss()
@@ -314,45 +324,6 @@ namespace DigitCaptchaRecogniser
         {
             _digit = _digit.Median(kernel);
         }
-
-        /*private void RecogniseDigits(List<Contour<Point>> contours, ImageProcessor proc)
-        {
-            if (contours.Count > 0)
-            {
-                List<FoundTemplateDesc> recognisedDigits = proc.FindTemplatesNonParalel(contours);
-                _samples = proc.samples;
-
-                Bitmap[] correlations = new Bitmap[5];
-
-                for (int correlationCounter = 0; correlationCounter < correlations.Length; correlationCounter++)
-                {
-                    correlations[correlationCounter] = new Bitmap(_appSettings.CorrelationWidth, _appSettings.CorrelationHeight);
-                    using (Graphics correlationsGraphics = Graphics.FromImage(correlations[correlationCounter]))
-                    {
-                        _samples[correlationCounter].Draw(correlationsGraphics, new Rectangle(0, 0,
-                            _appSettings.CorrelationWidth, _appSettings.CorrelationHeight));
-                    }
-                }
-
-                correlation1.Image = correlations[0];
-                correlation2.Image = correlations[1];
-                correlation3.Image = correlations[2];
-                correlation3.Image = correlations[3];
-                correlation3.Image = correlations[4];
-
-                for (int recognisedDigitCounter = 0; recognisedDigitCounter < recognisedDigits.Count; recognisedDigitCounter++)
-                {
-                    recognisedText[recognisedDigitCounter] =
-                        (recognisedDigits[recognisedDigitCounter] == null) ? -1 : recognisedDigits[recognisedDigitCounter].template.name.SafeToInt(-1);
-                }
-
-                digit1Text.Text = (recognisedText[0] < 0) ? "*" : recognisedText[0].ToString();
-                digit2Text.Text = (recognisedText[1] < 0) ? "*" : recognisedText[1].ToString();
-                digit3Text.Text = (recognisedText[2] < 0) ? "*" : recognisedText[2].ToString();
-                digit4Text.Text = (recognisedText[3] < 0) ? "*" : recognisedText[3].ToString();
-                digit5Text.Text = (recognisedText[4] < 0) ? "*" : recognisedText[4].ToString();
-            }
-        }*/
 
         private int SortContour(ImageProcessor processor, out int secondLongestContourIndex)
         {

@@ -97,7 +97,7 @@ namespace DigitCaptchaRecogniser.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        [global::System.Configuration.DefaultSettingValueAttribute("2")]
         public double GaussSigma {
             get {
                 return ((double)(this["GaussSigma"]));
@@ -106,7 +106,7 @@ namespace DigitCaptchaRecogniser.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        [global::System.Configuration.DefaultSettingValueAttribute("3")]
         public int GaussKernelSize {
             get {
                 return ((int)(this["GaussKernelSize"]));
