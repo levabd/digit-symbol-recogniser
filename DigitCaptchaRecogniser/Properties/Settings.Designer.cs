@@ -34,10 +34,10 @@ namespace DigitCaptchaRecogniser.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("95")]
-        public byte Treshold {
+        [global::System.Configuration.DefaultSettingValueAttribute("148")]
+        public byte Threshold {
             get {
-                return ((byte)(this["Treshold"]));
+                return ((byte)(this["Threshold"]));
             }
         }
         
@@ -61,10 +61,10 @@ namespace DigitCaptchaRecogniser.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("70")]
-        public int NoiseObjectThreshold {
+        [global::System.Configuration.DefaultSettingValueAttribute("50")]
+        public byte NoiseObjectThreshold {
             get {
-                return ((int)(this["NoiseObjectThreshold"]));
+                return ((byte)(this["NoiseObjectThreshold"]));
             }
         }
         
@@ -97,7 +97,7 @@ namespace DigitCaptchaRecogniser.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("3")]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
         public double GaussSigma {
             get {
                 return ((double)(this["GaussSigma"]));
@@ -106,7 +106,7 @@ namespace DigitCaptchaRecogniser.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("5")]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
         public int GaussKernelSize {
             get {
                 return ((int)(this["GaussKernelSize"]));
@@ -115,7 +115,7 @@ namespace DigitCaptchaRecogniser.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("110")]
+        [global::System.Configuration.DefaultSettingValueAttribute("70")]
         public byte GaussThreshold {
             get {
                 return ((byte)(this["GaussThreshold"]));
@@ -124,7 +124,7 @@ namespace DigitCaptchaRecogniser.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("50")]
+        [global::System.Configuration.DefaultSettingValueAttribute("25")]
         public int ContourObjectThreshold {
             get {
                 return ((int)(this["ContourObjectThreshold"]));
@@ -133,10 +133,10 @@ namespace DigitCaptchaRecogniser.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("3")]
-        public int ContoursRatio {
+        [global::System.Configuration.DefaultSettingValueAttribute("3.5")]
+        public double ContoursRatio {
             get {
-                return ((int)(this["ContoursRatio"]));
+                return ((double)(this["ContoursRatio"]));
             }
         }
         
@@ -187,7 +187,7 @@ namespace DigitCaptchaRecogniser.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("4")]
+        [global::System.Configuration.DefaultSettingValueAttribute("2")]
         public int MaxACFDescriptorDeviation {
             get {
                 return ((int)(this["MaxACFDescriptorDeviation"]));
@@ -214,7 +214,7 @@ namespace DigitCaptchaRecogniser.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("50")]
+        [global::System.Configuration.DefaultSettingValueAttribute("60")]
         public int СannyThreshold {
             get {
                 return ((int)(this["СannyThreshold"]));

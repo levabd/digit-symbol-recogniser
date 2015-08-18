@@ -1,11 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
-using System.IO;
-using AForge;
 using AForge.Imaging;
 using AForge.Imaging.Filters;
 using Image = System.Drawing.Image;
-using Point = System.Drawing.Point;
 
 namespace DigitCaptchaRecogniser.Helpers
 {
@@ -15,6 +13,18 @@ namespace DigitCaptchaRecogniser.Helpers
         {
             Grayscale grayScaler = new Grayscale(0.2125, 0.7154, 0.0721);
             return grayScaler.Apply(new Bitmap(image));
+        }
+
+        public static List<CaptchaDigit> ExtractDigits(this Image sourceImage, int DigitWidth, int SecondDigitWidth)
+        {
+            List<CaptchaDigit> digits = new List<CaptchaDigit>();
+            digits.Add(new CaptchaDigit(sourceImage.Crop(new Rectangle(0, 0, DigitWidth, sourceImage.Height))));
+            digits.Add(new CaptchaDigit(sourceImage.Crop(new Rectangle(DigitWidth + 1, 0, DigitWidth, sourceImage.Height))));
+            digits.Add(new CaptchaDigit(sourceImage.Crop(new Rectangle(DigitWidth * 2 + 1, 0, SecondDigitWidth, sourceImage.Height))));
+            digits.Add(new CaptchaDigit(sourceImage.Crop(new Rectangle(DigitWidth * 2 + SecondDigitWidth + 1, 0, SecondDigitWidth, sourceImage.Height))));
+            digits.Add(new CaptchaDigit(sourceImage.Crop(new Rectangle(DigitWidth * 2 + SecondDigitWidth * 2 + 1, 0, SecondDigitWidth, sourceImage.Height))));
+
+            return digits;
         }
 
         /// <summary>
@@ -69,6 +79,37 @@ namespace DigitCaptchaRecogniser.Helpers
         }
 
         /// <summary>
+        /// Binarize image with SIS threshold filter
+        /// </summary>
+        /// <param name="image"></param>
+        public static Image SISThreshold(this Image image)
+        {
+            SISThreshold thresholdFilter = new SISThreshold();
+            return thresholdFilter.Apply(BitmapGrayscale(image));
+        }
+
+        /// <summary>
+        /// Binarize image with Otsu threshold filter
+        /// </summary>
+        /// <param name="image"></param>
+        public static Image OtsuThreshold(this Image image)
+        {
+            OtsuThreshold thresholdFilter = new OtsuThreshold();
+            return thresholdFilter.Apply(BitmapGrayscale(image));
+        }
+
+        /// <summary>
+        /// Binarize image with iterative threshold filter
+        /// </summary>
+        /// <param name="image"></param>
+        /// <param name="threshold">threshold for binarization</param>
+        public static Image IterativeThreshold(this Image image, byte threshold)
+        {
+            IterativeThreshold thresholdFilter = new IterativeThreshold(2, threshold);
+            return thresholdFilter.Apply(BitmapGrayscale(image));
+        }
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="image"></param>
@@ -113,63 +154,6 @@ namespace DigitCaptchaRecogniser.Helpers
             var bitmapImage = new Bitmap(image);
             Median medianFilter = new Median(core);
             medianFilter.ApplyInPlace(bitmapImage);
-            return bitmapImage;
-        }
-
-        /// <summary>
-        /// Display little noise object on image
-        /// </summary>
-        /// <param name="image"></param>
-        /// <param name="fillColor">Color to fill noise bject</param>
-        /// <param name="threshold">Threshold for noise oblect area</param>
-        public static Image DisplayNoise(this Image image, Color fillColor, int threshold = 100)
-        {
-            Bitmap bitmapImage = new Bitmap(image);
-
-            BlobCounter bc = new BlobCounter(bitmapImage);
-            // specify sort order
-            bc.ObjectsOrder = ObjectsOrder.Size;
-            Blob[] blobs = bc.GetObjectsInformation();
-
-            SolidBrush redBrush = new SolidBrush(fillColor);
-            using (Graphics digit1Graph = Graphics.FromImage(bitmapImage))
-            {
-                foreach (Blob blob in blobs)
-                {
-                    if (blob.Area < threshold)
-                        digit1Graph.FillRectangle(redBrush, blob.Rectangle);
-                }
-            }
-
-            return bitmapImage;
-        }
-
-        /// <summary>
-        /// Remove little noise object on binary image
-        /// </summary>
-        /// <param name="image"></param>
-        /// <param name="threshold">Threshold for noise oblect area</param>
-        public static Image RemoveNoise(this Image image, int threshold = 100)
-        {
-            Bitmap bitmapImage = new Bitmap(image);
-
-
-            BlobCounter bc = new BlobCounter(bitmapImage);
-            // specify sort order
-            bc.ObjectsOrder = ObjectsOrder.Size;
-            Blob[] blobs = bc.GetObjectsInformation();
-
-
-            SolidBrush redBrush = new SolidBrush(Color.Black);
-            using (Graphics digit1Graph = Graphics.FromImage(bitmapImage))
-            {
-                foreach (Blob blob in blobs)
-                {
-                    if (blob.Area < threshold)
-                        digit1Graph.FillRectangle(redBrush, blob.Rectangle);
-                }
-            }
-
             return bitmapImage;
         }
 

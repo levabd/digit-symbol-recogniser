@@ -42,8 +42,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.imagePath = new System.Windows.Forms.TextBox();
             this.loadImage = new System.Windows.Forms.Button();
-            this.thresholdImage = new System.Windows.Forms.PictureBox();
             this.medianImage = new System.Windows.Forms.PictureBox();
+            this.thresholdImage = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -71,8 +71,6 @@
             this.lastContourDigit1 = new System.Windows.Forms.PictureBox();
             this.lastContourDigit2 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
-            this.correlation4 = new System.Windows.Forms.PictureBox();
-            this.correlation5 = new System.Windows.Forms.PictureBox();
             this.correlation3 = new System.Windows.Forms.PictureBox();
             this.correlation1 = new System.Windows.Forms.PictureBox();
             this.correlation2 = new System.Windows.Forms.PictureBox();
@@ -81,13 +79,15 @@
             this.buttonTeach = new System.Windows.Forms.Button();
             this.checkBoxSaveFiles = new System.Windows.Forms.CheckBox();
             this.openImageDialog = new System.Windows.Forms.OpenFileDialog();
+            this.correlation5 = new System.Windows.Forms.PictureBox();
+            this.correlation4 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kuwaharaImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sourceImage)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.thresholdImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.medianImage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.thresholdImage)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.digit4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.digit5)).BeginInit();
@@ -113,12 +113,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.lastContourDigit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lastContourDigit2)).BeginInit();
             this.tableLayoutPanel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.correlation4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.correlation5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.correlation3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.correlation1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.correlation2)).BeginInit();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.correlation5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.correlation4)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -134,8 +134,8 @@
             this.tableLayoutPanel1.Controls.Add(this.sourceImage, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.thresholdImage, 2, 1);
-            this.tableLayoutPanel1.Controls.Add(this.medianImage, 3, 1);
+            this.tableLayoutPanel1.Controls.Add(this.medianImage, 2, 1);
+            this.tableLayoutPanel1.Controls.Add(this.thresholdImage, 3, 1);
             this.tableLayoutPanel1.Controls.Add(this.label3, 2, 2);
             this.tableLayoutPanel1.Controls.Add(this.label4, 3, 2);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 3);
@@ -306,27 +306,27 @@
             this.loadImage.UseVisualStyleBackColor = true;
             this.loadImage.Click += new System.EventHandler(this.loadImage_Click);
             // 
-            // thresholdImage
-            // 
-            this.thresholdImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.thresholdImage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.thresholdImage.Location = new System.Drawing.Point(519, 43);
-            this.thresholdImage.Name = "thresholdImage";
-            this.thresholdImage.Size = new System.Drawing.Size(252, 64);
-            this.thresholdImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.thresholdImage.TabIndex = 8;
-            this.thresholdImage.TabStop = false;
-            // 
             // medianImage
             // 
             this.medianImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.medianImage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.medianImage.Location = new System.Drawing.Point(777, 43);
+            this.medianImage.Location = new System.Drawing.Point(519, 43);
             this.medianImage.Name = "medianImage";
-            this.medianImage.Size = new System.Drawing.Size(253, 64);
+            this.medianImage.Size = new System.Drawing.Size(252, 64);
             this.medianImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.medianImage.TabIndex = 9;
+            this.medianImage.TabIndex = 8;
             this.medianImage.TabStop = false;
+            // 
+            // thresholdImage
+            // 
+            this.thresholdImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.thresholdImage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.thresholdImage.Location = new System.Drawing.Point(777, 43);
+            this.thresholdImage.Name = "thresholdImage";
+            this.thresholdImage.Size = new System.Drawing.Size(253, 64);
+            this.thresholdImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.thresholdImage.TabIndex = 9;
+            this.thresholdImage.TabStop = false;
             // 
             // label3
             // 
@@ -335,7 +335,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(252, 20);
             this.label3.TabIndex = 10;
-            this.label3.Text = "After Threshold";
+            this.label3.Text = "After Median filter";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label4
@@ -345,7 +345,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(253, 20);
             this.label4.TabIndex = 11;
-            this.label4.Text = "Result. After Median filter";
+            this.label4.Text = "Result. After Threshold";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tableLayoutPanel2
@@ -683,28 +683,6 @@
             this.tableLayoutPanel6.Size = new System.Drawing.Size(1027, 121);
             this.tableLayoutPanel6.TabIndex = 15;
             // 
-            // correlation4
-            // 
-            this.correlation4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.correlation4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.correlation4.Location = new System.Drawing.Point(618, 3);
-            this.correlation4.Name = "correlation4";
-            this.correlation4.Size = new System.Drawing.Size(199, 115);
-            this.correlation4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.correlation4.TabIndex = 13;
-            this.correlation4.TabStop = false;
-            // 
-            // correlation5
-            // 
-            this.correlation5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.correlation5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.correlation5.Location = new System.Drawing.Point(823, 3);
-            this.correlation5.Name = "correlation5";
-            this.correlation5.Size = new System.Drawing.Size(201, 115);
-            this.correlation5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.correlation5.TabIndex = 12;
-            this.correlation5.TabStop = false;
-            // 
             // correlation3
             // 
             this.correlation3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -713,7 +691,7 @@
             this.correlation3.Name = "correlation3";
             this.correlation3.Size = new System.Drawing.Size(199, 115);
             this.correlation3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.correlation3.TabIndex = 11;
+            this.correlation3.TabIndex = 12;
             this.correlation3.TabStop = false;
             // 
             // correlation1
@@ -791,6 +769,28 @@
             this.openImageDialog.RestoreDirectory = true;
             this.openImageDialog.Title = "Open image for recognition";
             // 
+            // correlation5
+            // 
+            this.correlation5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.correlation5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.correlation5.Location = new System.Drawing.Point(823, 3);
+            this.correlation5.Name = "correlation5";
+            this.correlation5.Size = new System.Drawing.Size(201, 115);
+            this.correlation5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.correlation5.TabIndex = 13;
+            this.correlation5.TabStop = false;
+            // 
+            // correlation4
+            // 
+            this.correlation4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.correlation4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.correlation4.Location = new System.Drawing.Point(618, 3);
+            this.correlation4.Name = "correlation4";
+            this.correlation4.Size = new System.Drawing.Size(199, 115);
+            this.correlation4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.correlation4.TabIndex = 14;
+            this.correlation4.TabStop = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -806,8 +806,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.sourceImage)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.thresholdImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.medianImage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.thresholdImage)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.digit4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.digit5)).EndInit();
@@ -833,13 +833,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.lastContourDigit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lastContourDigit2)).EndInit();
             this.tableLayoutPanel6.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.correlation4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.correlation5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.correlation3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.correlation1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.correlation2)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.correlation5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.correlation4)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -856,7 +856,7 @@
         private System.Windows.Forms.PictureBox kuwaharaImage;
         private System.Windows.Forms.PictureBox sourceImage;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.PictureBox medianImage;
+        private System.Windows.Forms.PictureBox thresholdImage;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.PictureBox digit4;
@@ -876,7 +876,7 @@
         private System.Windows.Forms.PictureBox contourDigit3;
         private System.Windows.Forms.PictureBox contourDigit1;
         private System.Windows.Forms.PictureBox contourDigit2;
-        private System.Windows.Forms.PictureBox thresholdImage;
+        private System.Windows.Forms.PictureBox medianImage;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.PictureBox lastContourDigit4;
@@ -885,8 +885,6 @@
         private System.Windows.Forms.PictureBox lastContourDigit1;
         private System.Windows.Forms.PictureBox lastContourDigit2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
-        private System.Windows.Forms.PictureBox correlation4;
-        private System.Windows.Forms.PictureBox correlation5;
         private System.Windows.Forms.PictureBox correlation3;
         private System.Windows.Forms.PictureBox correlation1;
         private System.Windows.Forms.PictureBox correlation2;
@@ -899,6 +897,8 @@
         private System.Windows.Forms.TextBox digit1Text;
         private System.Windows.Forms.Button buttonTeach;
         private System.Windows.Forms.CheckBox differences69;
+        private System.Windows.Forms.PictureBox correlation5;
+        private System.Windows.Forms.PictureBox correlation4;
     }
 }
 

@@ -68,6 +68,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Digits.cs" />
     <Compile Include="helpers\StringHelper.cs" />
     <Compile Include="helpers\ImageHelper.cs" />
     <Compile Include="MainForm.cs">
