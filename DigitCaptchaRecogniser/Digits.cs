@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using System.Windows.Forms;
 using AForge.Imaging;
 using AForge.Imaging.Filters;
 using AForge.Math;
 using ContourAnalysisNS;
 using DigitCaptchaRecogniser.Helpers;
 using Emgu.CV;
+using Emgu.CV.CvEnum;
 using Emgu.CV.Structure;
 using Image = System.Drawing.Image;
 
@@ -204,6 +204,17 @@ namespace DigitCaptchaRecogniser
             return corr;
         }
 
+        public Image DisplayAdaptiveThreshold(double adaptiveThresholdParameter, int adaptiveThresholdBlockSize)
+        {
+            Image<Gray, byte> grayFrame = new Image<Gray, byte>(new Bitmap(_digit));
+            //CvInvoke.cvAdaptiveThreshold(grayFrame, grayFrame, 255, ADAPTIVE_THRESHOLD_TYPE.CV_ADAPTIVE_THRESH_MEAN_C, THRESH.CV_THRESH_BINARY,
+            //        adaptiveThresholdBlockSize + adaptiveThresholdBlockSize % 2 + 1, adaptiveThresholdParameter);
+            CvInvoke.cvAdaptiveThreshold(grayFrame, grayFrame, 255, ADAPTIVE_THRESHOLD_TYPE.CV_ADAPTIVE_THRESH_GAUSSIAN_C, THRESH.CV_THRESH_BINARY,
+                adaptiveThresholdBlockSize + adaptiveThresholdBlockSize % 2 + 1, adaptiveThresholdParameter);
+            //grayFrame._Not();
+            return grayFrame.ToBitmap();
+        }
+
         /// <summary>
         /// Remove little noise object on binary image
         /// </summary>
@@ -254,22 +265,99 @@ namespace DigitCaptchaRecogniser
             _digit = _digit.Gauss(gaussSigma, gaussKernelSize);
         }
 
+        public void AdaptiveThreshold(double adaptiveThresholdParameter, int adaptiveThresholdBlockSize)
+        {
+            Image<Gray, byte> grayFrame = new Image<Gray, byte>(new Bitmap(_digit));
+            //CvInvoke.cvAdaptiveThreshold(grayFrame, grayFrame, 255, ADAPTIVE_THRESHOLD_TYPE.CV_ADAPTIVE_THRESH_MEAN_C, THRESH.CV_THRESH_BINARY,
+            //        adaptiveThresholdBlockSize + adaptiveThresholdBlockSize % 2 + 1, adaptiveThresholdParameter);
+            CvInvoke.cvAdaptiveThreshold(grayFrame, grayFrame, 255, ADAPTIVE_THRESHOLD_TYPE.CV_ADAPTIVE_THRESH_GAUSSIAN_C, THRESH.CV_THRESH_BINARY,
+                adaptiveThresholdBlockSize + adaptiveThresholdBlockSize % 2 + 1, adaptiveThresholdParameter);
+            //grayFrame._Not();
+            _digit = grayFrame.ToBitmap();
+        }
+
+        public void FillAllContours(ImageProcessor processor, double owerflowContoursRatio)
+        {
+            Bitmap newFill = new Bitmap(_digit.Width, _digit.Height);
+            using (Graphics contourGraph = Graphics.FromImage(newFill))
+            {
+                contourGraph.Clear(Color.Black);
+            }
+ 
+            processor.ProcessImage(new Image<Bgr, Byte>(new Bitmap(_digit)), true);
+
+            for (int contourCounter = 0; contourCounter < processor.contours.Count; contourCounter++)
+            {
+                using (Graphics contourGraph = Graphics.FromImage(newFill))
+                {
+                    contourGraph.FillPolygon(new SolidBrush(Color.White), processor.contours[contourCounter].ToArray());
+                }   
+            }
+
+            _filledContour = newFill;
+        }
+
+        public void MergeContours(double owerflowContoursRatio, double adaptiveThresholdParameter, int adaptiveThresholdBlockSize)
+        {
+            int secondBiggestContourIndex;
+            ImageProcessor processor = new ImageProcessor();
+            processor.equalizeHist = false;
+            processor.finder.maxRotateAngle = Math.PI / 4;
+            processor.minContourArea = 10;
+            processor.minContourLength = 15;
+            processor.finder.maxACFDescriptorDeviation = 2;
+            processor.finder.minACF = 0.96;
+            processor.finder.minICF = 0.85;
+            processor.blur = false;
+            processor.noiseFilter = false;
+            processor.cannyThreshold = 50;
+            processor.adaptiveThresholdBlockSize = 1;
+            processor.adaptiveThresholdParameter = 0.5;
+
+            processor.ProcessImage(new Image<Bgr, Byte>(new Bitmap(_digit)), true);
+            if (processor.contours.Count < 3)
+            {
+                FindBestContour(processor, owerflowContoursRatio);
+                FillContour();
+                _digit = _filledContour;
+                return;
+            }
+
+            while (processor.contours.Count > 2)
+            {
+                AdaptiveThreshold(adaptiveThresholdParameter, adaptiveThresholdBlockSize);
+                FillAllContours(processor, owerflowContoursRatio);
+                _digit = _filledContour;
+                processor.ProcessImage(new Image<Bgr, Byte>(new Bitmap(_digit)), true);
+                SortContour(processor, out secondBiggestContourIndex);
+                processor.minContourArea = (int)(processor.contours[secondBiggestContourIndex].Area / 4);
+                processor.ProcessImage(new Image<Bgr, Byte>(new Bitmap(_digit)), true);
+            }
+        }
+
         public void FindBestContour(ImageProcessor processor, double owerflowContoursRatio)
         {
-            int secondLongestContourIndex;
+            int secondBiggestContourIndex;
             processor.ProcessImage(new Image<Bgr, Byte>(new Bitmap(_digit)), true);
-            var longestContourIndex = SortContour(processor, out secondLongestContourIndex);
+            var biggestContourIndex = SortContour(processor, out secondBiggestContourIndex);
 
-            if ((longestContourIndex != secondLongestContourIndex) &&
-                (processor.contours[longestContourIndex].Area/processor.contours[secondLongestContourIndex].Area <
-                 owerflowContoursRatio))
+            if (((biggestContourIndex != secondBiggestContourIndex) &&
+                (processor.contours[biggestContourIndex].Area / processor.contours[secondBiggestContourIndex].Area <
+                 owerflowContoursRatio)) || (processor.contours.Count < 3))
             {
-                _contour = processor.contours[secondLongestContourIndex];
+                _contour = processor.contours[secondBiggestContourIndex];
             }
             else
             {
-                _contour = processor.contours[longestContourIndex];
+                _contour = processor.contours[biggestContourIndex];
             }
+        }
+
+        public void FindMaxContour(ImageProcessor processor)
+        {
+            int secondLongestContourIndex;
+            processor.ProcessImage(new Image<Bgr, Byte>(new Bitmap(_digit)), true);
+            _contour = processor.contours[SortContour(processor, out secondLongestContourIndex)];
         }
 
         public void FillContour()
@@ -289,7 +377,7 @@ namespace DigitCaptchaRecogniser
         {
             var contours = new List<Contour<Point>>();
             contours.Add(_contour);
-            processor.FindTemplatesNonParalel(contours);
+            processor.FindTemplatesNonParalel(contours, true);
             _contourTemplate = processor.samples[0];
         }
 
@@ -297,14 +385,14 @@ namespace DigitCaptchaRecogniser
         {
             var contours = new List<Contour<Point>>();
             contours.Add(_contour);
-            List<FoundTemplateDesc> recognisedDigits = processor.FindTemplatesNonParalel(contours);
-            _contourTemplate = processor.samples[0];
+            List<FoundTemplateDesc> recognisedDigits = processor.FindTemplatesNonParalel(contours, true);
             if (recognisedDigits[0] == null)
             {
                 _recognised = false;
             }
             else
             {
+                _contourTemplate = recognisedDigits[0].template;
                 _cifre = recognisedDigits[0].template.name.SafeToInt(-1);
                 _recognised = true;
             }

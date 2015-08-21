@@ -97,7 +97,7 @@ namespace DigitCaptchaRecogniser.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("2")]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
         public double GaussSigma {
             get {
                 return ((double)(this["GaussSigma"]));
@@ -106,7 +106,7 @@ namespace DigitCaptchaRecogniser.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("3")]
+        [global::System.Configuration.DefaultSettingValueAttribute("2")]
         public int GaussKernelSize {
             get {
                 return ((int)(this["GaussKernelSize"]));
@@ -115,7 +115,7 @@ namespace DigitCaptchaRecogniser.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("70")]
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
         public byte GaussThreshold {
             get {
                 return ((byte)(this["GaussThreshold"]));
@@ -133,7 +133,7 @@ namespace DigitCaptchaRecogniser.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("3.5")]
+        [global::System.Configuration.DefaultSettingValueAttribute("3")]
         public double ContoursRatio {
             get {
                 return ((double)(this["ContoursRatio"]));
@@ -188,9 +188,9 @@ namespace DigitCaptchaRecogniser.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("2")]
-        public int MaxACFDescriptorDeviation {
+        public double MaxACFDescriptorDeviation {
             get {
-                return ((int)(this["MaxACFDescriptorDeviation"]));
+                return ((double)(this["MaxACFDescriptorDeviation"]));
             }
         }
         
@@ -214,7 +214,7 @@ namespace DigitCaptchaRecogniser.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("60")]
+        [global::System.Configuration.DefaultSettingValueAttribute("50")]
         public int СannyThreshold {
             get {
                 return ((int)(this["СannyThreshold"]));
@@ -223,7 +223,7 @@ namespace DigitCaptchaRecogniser.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("6")]
+        [global::System.Configuration.DefaultSettingValueAttribute("3")]
         public int AdaptiveThresholdBlockSize {
             get {
                 return ((int)(this["AdaptiveThresholdBlockSize"]));
@@ -232,10 +232,118 @@ namespace DigitCaptchaRecogniser.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1")]
-        public int AdaptiveThresholdParameter {
+        [global::System.Configuration.DefaultSettingValueAttribute("0.5")]
+        public double AdaptiveThresholdParameter {
             get {
-                return ((int)(this["AdaptiveThresholdParameter"]));
+                return ((double)(this["AdaptiveThresholdParameter"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public double MaxACFNormaDeviation0 {
+            get {
+                return ((double)(this["MaxACFNormaDeviation0"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2")]
+        public double MaxACFNormaDeviation1 {
+            get {
+                return ((double)(this["MaxACFNormaDeviation1"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2")]
+        public double MaxACFNormaDeviation2 {
+            get {
+                return ((double)(this["MaxACFNormaDeviation2"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2")]
+        public double MaxACFNormaDeviation3 {
+            get {
+                return ((double)(this["MaxACFNormaDeviation3"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2")]
+        public double MaxACFNormaDeviation4 {
+            get {
+                return ((double)(this["MaxACFNormaDeviation4"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2")]
+        public double MaxACFNormaDeviation5 {
+            get {
+                return ((double)(this["MaxACFNormaDeviation5"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public double MaxACFNormaDeviation6 {
+            get {
+                return ((double)(this["MaxACFNormaDeviation6"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2")]
+        public double MaxACFNormaDeviation7 {
+            get {
+                return ((double)(this["MaxACFNormaDeviation7"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public double MaxACFNormaDeviation8 {
+            get {
+                return ((double)(this["MaxACFNormaDeviation8"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public double MaxACFNormaDeviation9 {
+            get {
+                return ((double)(this["MaxACFNormaDeviation9"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.785")]
+        public double MaxAngle {
+            get {
+                return ((double)(this["MaxAngle"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.06")]
+        public double MaxAngleForSeven {
+            get {
+                return ((double)(this["MaxAngleForSeven"]));
             }
         }
     }

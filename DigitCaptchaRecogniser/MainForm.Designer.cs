@@ -30,17 +30,21 @@
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
+            this.Template5Index = new System.Windows.Forms.Label();
+            this.Template4Index = new System.Windows.Forms.Label();
+            this.Template3Index = new System.Windows.Forms.Label();
+            this.Template2Index = new System.Windows.Forms.Label();
+            this.digit1Text = new System.Windows.Forms.TextBox();
             this.digit5Text = new System.Windows.Forms.TextBox();
             this.digit4Text = new System.Windows.Forms.TextBox();
             this.digit3Text = new System.Windows.Forms.TextBox();
             this.digit2Text = new System.Windows.Forms.TextBox();
-            this.digit1Text = new System.Windows.Forms.TextBox();
+            this.Template1Index = new System.Windows.Forms.Label();
             this.sourceImage = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.imagePath = new System.Windows.Forms.TextBox();
             this.loadImage = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.digit4 = new System.Windows.Forms.PictureBox();
             this.digit5 = new System.Windows.Forms.PictureBox();
@@ -72,11 +76,14 @@
             this.correlation1 = new System.Windows.Forms.PictureBox();
             this.correlation2 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.buttonReload = new System.Windows.Forms.Button();
             this.differences69 = new System.Windows.Forms.CheckBox();
             this.buttonTeach = new System.Windows.Forms.Button();
             this.checkBoxSaveFiles = new System.Windows.Forms.CheckBox();
-            this.openImageDialog = new System.Windows.Forms.OpenFileDialog();
+            this.label4 = new System.Windows.Forms.Label();
             this.textBoxAllDigits = new System.Windows.Forms.TextBox();
+            this.openImageDialog = new System.Windows.Forms.OpenFileDialog();
+            this.differences17 = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sourceImage)).BeginInit();
@@ -153,70 +160,126 @@
             // 
             // tableLayoutPanel7
             // 
-            this.tableLayoutPanel7.ColumnCount = 5;
+            this.tableLayoutPanel7.ColumnCount = 10;
             this.tableLayoutPanel1.SetColumnSpan(this.tableLayoutPanel7, 4);
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel7.Controls.Add(this.digit5Text, 4, 0);
-            this.tableLayoutPanel7.Controls.Add(this.digit4Text, 3, 0);
-            this.tableLayoutPanel7.Controls.Add(this.digit3Text, 2, 0);
-            this.tableLayoutPanel7.Controls.Add(this.digit2Text, 1, 0);
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel7.Controls.Add(this.Template5Index, 9, 0);
+            this.tableLayoutPanel7.Controls.Add(this.Template4Index, 7, 0);
+            this.tableLayoutPanel7.Controls.Add(this.Template3Index, 5, 0);
+            this.tableLayoutPanel7.Controls.Add(this.Template2Index, 3, 0);
             this.tableLayoutPanel7.Controls.Add(this.digit1Text, 0, 0);
+            this.tableLayoutPanel7.Controls.Add(this.digit5Text, 8, 0);
+            this.tableLayoutPanel7.Controls.Add(this.digit4Text, 6, 0);
+            this.tableLayoutPanel7.Controls.Add(this.digit3Text, 4, 0);
+            this.tableLayoutPanel7.Controls.Add(this.digit2Text, 2, 0);
+            this.tableLayoutPanel7.Controls.Add(this.Template1Index, 1, 0);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel7.Location = new System.Drawing.Point(3, 902);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 1;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
             this.tableLayoutPanel7.Size = new System.Drawing.Size(1027, 26);
             this.tableLayoutPanel7.TabIndex = 16;
             // 
-            // digit5Text
+            // Template5Index
             // 
-            this.digit5Text.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.digit5Text.Location = new System.Drawing.Point(823, 3);
-            this.digit5Text.Name = "digit5Text";
-            this.digit5Text.Size = new System.Drawing.Size(201, 20);
-            this.digit5Text.TabIndex = 4;
-            this.digit5Text.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Template5Index.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Template5Index.Location = new System.Drawing.Point(874, 0);
+            this.Template5Index.Name = "Template5Index";
+            this.Template5Index.Size = new System.Drawing.Size(150, 26);
+            this.Template5Index.TabIndex = 9;
+            this.Template5Index.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // digit4Text
+            // Template4Index
             // 
-            this.digit4Text.Location = new System.Drawing.Point(618, 3);
-            this.digit4Text.Name = "digit4Text";
-            this.digit4Text.Size = new System.Drawing.Size(199, 20);
-            this.digit4Text.TabIndex = 3;
-            this.digit4Text.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Template4Index.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Template4Index.Location = new System.Drawing.Point(669, 0);
+            this.Template4Index.Name = "Template4Index";
+            this.Template4Index.Size = new System.Drawing.Size(148, 26);
+            this.Template4Index.TabIndex = 8;
+            this.Template4Index.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // digit3Text
+            // Template3Index
             // 
-            this.digit3Text.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.digit3Text.Location = new System.Drawing.Point(413, 3);
-            this.digit3Text.Name = "digit3Text";
-            this.digit3Text.Size = new System.Drawing.Size(199, 20);
-            this.digit3Text.TabIndex = 2;
-            this.digit3Text.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Template3Index.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Template3Index.Location = new System.Drawing.Point(464, 0);
+            this.Template3Index.Name = "Template3Index";
+            this.Template3Index.Size = new System.Drawing.Size(148, 26);
+            this.Template3Index.TabIndex = 7;
+            this.Template3Index.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // digit2Text
+            // Template2Index
             // 
-            this.digit2Text.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.digit2Text.Location = new System.Drawing.Point(208, 3);
-            this.digit2Text.Name = "digit2Text";
-            this.digit2Text.Size = new System.Drawing.Size(199, 20);
-            this.digit2Text.TabIndex = 1;
-            this.digit2Text.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Template2Index.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Template2Index.Location = new System.Drawing.Point(259, 0);
+            this.Template2Index.Name = "Template2Index";
+            this.Template2Index.Size = new System.Drawing.Size(148, 26);
+            this.Template2Index.TabIndex = 6;
+            this.Template2Index.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // digit1Text
             // 
             this.digit1Text.Dock = System.Windows.Forms.DockStyle.Fill;
             this.digit1Text.Location = new System.Drawing.Point(3, 3);
             this.digit1Text.Name = "digit1Text";
-            this.digit1Text.Size = new System.Drawing.Size(199, 20);
+            this.digit1Text.Size = new System.Drawing.Size(45, 20);
             this.digit1Text.TabIndex = 0;
-            this.digit1Text.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.digit1Text.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // digit5Text
+            // 
+            this.digit5Text.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.digit5Text.Location = new System.Drawing.Point(823, 3);
+            this.digit5Text.Name = "digit5Text";
+            this.digit5Text.Size = new System.Drawing.Size(45, 20);
+            this.digit5Text.TabIndex = 4;
+            this.digit5Text.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.digit5Text.TextChanged += new System.EventHandler(this.digit5Text_TextChanged);
+            // 
+            // digit4Text
+            // 
+            this.digit4Text.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.digit4Text.Location = new System.Drawing.Point(618, 3);
+            this.digit4Text.Name = "digit4Text";
+            this.digit4Text.Size = new System.Drawing.Size(45, 20);
+            this.digit4Text.TabIndex = 3;
+            this.digit4Text.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // digit3Text
+            // 
+            this.digit3Text.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.digit3Text.Location = new System.Drawing.Point(413, 3);
+            this.digit3Text.Name = "digit3Text";
+            this.digit3Text.Size = new System.Drawing.Size(45, 20);
+            this.digit3Text.TabIndex = 2;
+            this.digit3Text.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // digit2Text
+            // 
+            this.digit2Text.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.digit2Text.Location = new System.Drawing.Point(208, 3);
+            this.digit2Text.Name = "digit2Text";
+            this.digit2Text.Size = new System.Drawing.Size(45, 20);
+            this.digit2Text.TabIndex = 1;
+            this.digit2Text.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // Template1Index
+            // 
+            this.Template1Index.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Template1Index.Location = new System.Drawing.Point(54, 0);
+            this.Template1Index.Name = "Template1Index";
+            this.Template1Index.Size = new System.Drawing.Size(148, 26);
+            this.Template1Index.TabIndex = 5;
+            this.Template1Index.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // sourceImage
             // 
@@ -275,18 +338,6 @@
             this.loadImage.UseVisualStyleBackColor = true;
             this.loadImage.Click += new System.EventHandler(this.loadImage_Click);
             // 
-            // label4
-            // 
-            this.tableLayoutPanel1.SetColumnSpan(this.label4, 2);
-            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(519, 124);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(511, 20);
-            this.label4.TabIndex = 11;
-            this.label4.Text = "Result";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 5;
@@ -306,7 +357,7 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 142F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 145F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(1027, 145);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
@@ -384,7 +435,7 @@
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 142F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 145F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(1027, 145);
             this.tableLayoutPanel3.TabIndex = 12;
             // 
@@ -462,7 +513,7 @@
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 142F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 145F));
             this.tableLayoutPanel4.Size = new System.Drawing.Size(1027, 145);
             this.tableLayoutPanel4.TabIndex = 13;
             // 
@@ -540,7 +591,7 @@
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 142F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 145F));
             this.tableLayoutPanel5.Size = new System.Drawing.Size(1027, 145);
             this.tableLayoutPanel5.TabIndex = 14;
             // 
@@ -618,7 +669,7 @@
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 1;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 142F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 145F));
             this.tableLayoutPanel6.Size = new System.Drawing.Size(1027, 145);
             this.tableLayoutPanel6.TabIndex = 15;
             // 
@@ -680,6 +731,8 @@
             // panel2
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.panel2, 4);
+            this.panel2.Controls.Add(this.differences17);
+            this.panel2.Controls.Add(this.buttonReload);
             this.panel2.Controls.Add(this.differences69);
             this.panel2.Controls.Add(this.buttonTeach);
             this.panel2.Controls.Add(this.checkBoxSaveFiles);
@@ -688,6 +741,17 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1027, 31);
             this.panel2.TabIndex = 17;
+            // 
+            // buttonReload
+            // 
+            this.buttonReload.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonReload.Location = new System.Drawing.Point(82, 3);
+            this.buttonReload.Name = "buttonReload";
+            this.buttonReload.Size = new System.Drawing.Size(133, 23);
+            this.buttonReload.TabIndex = 3;
+            this.buttonReload.Text = "Reload Templates";
+            this.buttonReload.UseVisualStyleBackColor = true;
+            this.buttonReload.Click += new System.EventHandler(this.buttonReload_Click);
             // 
             // differences69
             // 
@@ -724,11 +788,17 @@
             this.checkBoxSaveFiles.Text = "Save files";
             this.checkBoxSaveFiles.UseVisualStyleBackColor = true;
             // 
-            // openImageDialog
+            // label4
             // 
-            this.openImageDialog.Filter = "\"All Images|*.jpeg;*.jpg;*.bmp;*.png;*.gif;*.tiff\"";
-            this.openImageDialog.RestoreDirectory = true;
-            this.openImageDialog.Title = "Open image for recognition";
+            this.tableLayoutPanel1.SetColumnSpan(this.label4, 2);
+            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(519, 124);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(511, 20);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "Result";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // textBoxAllDigits
             // 
@@ -739,6 +809,26 @@
             this.textBoxAllDigits.Name = "textBoxAllDigits";
             this.textBoxAllDigits.Size = new System.Drawing.Size(511, 80);
             this.textBoxAllDigits.TabIndex = 18;
+            this.textBoxAllDigits.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // openImageDialog
+            // 
+            this.openImageDialog.Filter = "\"All Images|*.jpeg;*.jpg;*.bmp;*.png;*.gif;*.tiff\"";
+            this.openImageDialog.RestoreDirectory = true;
+            this.openImageDialog.Title = "Open image for recognition";
+            // 
+            // differences17
+            // 
+            this.differences17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.differences17.AutoSize = true;
+            this.differences17.Checked = true;
+            this.differences17.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.differences17.Location = new System.Drawing.Point(485, 9);
+            this.differences17.Name = "differences17";
+            this.differences17.Size = new System.Drawing.Size(197, 17);
+            this.differences17.TabIndex = 4;
+            this.differences17.Text = "Enable differences between 1 and 7";
+            this.differences17.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -832,7 +922,6 @@
         private System.Windows.Forms.PictureBox correlation2;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.CheckBox checkBoxSaveFiles;
-        private System.Windows.Forms.TextBox digit5Text;
         private System.Windows.Forms.TextBox digit4Text;
         private System.Windows.Forms.TextBox digit3Text;
         private System.Windows.Forms.TextBox digit2Text;
@@ -842,6 +931,14 @@
         private System.Windows.Forms.PictureBox correlation5;
         private System.Windows.Forms.PictureBox correlation4;
         private System.Windows.Forms.TextBox textBoxAllDigits;
+        private System.Windows.Forms.Button buttonReload;
+        private System.Windows.Forms.TextBox digit5Text;
+        private System.Windows.Forms.Label Template5Index;
+        private System.Windows.Forms.Label Template4Index;
+        private System.Windows.Forms.Label Template3Index;
+        private System.Windows.Forms.Label Template2Index;
+        private System.Windows.Forms.Label Template1Index;
+        private System.Windows.Forms.CheckBox differences17;
     }
 }
 
