@@ -20,6 +20,7 @@ namespace ContourAnalysisNS
     public class Template
     {
         public string name;
+        public int index;
         public string name1;
         public Contour contour;
         public Contour autoCorr;
@@ -52,7 +53,6 @@ namespace ContourAnalysisNS
         static int[] filter2 = { -1, -1, 1, 1 };
         static int[] filter3 = { -1, 1, 1, -1 };
         static int[] filter4 = { -1, 1, -1, 1 };
-
         /// <summary>
         /// Calc wavelets convolution for ACF
         /// </summary>
