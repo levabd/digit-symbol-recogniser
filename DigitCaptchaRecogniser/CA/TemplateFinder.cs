@@ -91,7 +91,7 @@ namespace ContourAnalysisNS
                 return null;
         }
 
-        public FoundTemplateDesc FindTemplateByNorma(Templates templates, Template sample)
+        public FoundTemplateDesc FindTemplateByNorma(Templates templates, Template sample, bool rather6 = false, bool rather8 = false, bool rather9 = false)
         {
             //int maxInterCorrelationShift = (int)(templateSize * maxRotateAngle / Math.PI);
             //maxInterCorrelationShift = Math.Min(templateSize, maxInterCorrelationShift+13);
@@ -185,6 +185,26 @@ namespace ContourAnalysisNS
                     foundTemplate = template;
                     foundTemplate.index = templateIndex;
                     angle = interCorr.Angle;
+
+                    if (rather6 || rather8 || rather9)
+                    {
+                        if ((foundTemplate.name == "6890") && rather6)
+                        {
+                            foundTemplate.name = "6";
+                        }
+                        else if ((foundTemplate.name == "6890") && rather8)
+                        {
+                            foundTemplate.name = "8";
+                        }
+                        else if ((foundTemplate.name == "6890") && rather9)
+                        {
+                            foundTemplate.name = "9";
+                        }
+                        else
+                        {
+                            foundTemplate.name = "0";
+                        }
+                    }
                 }
             }
             //ignore antipatterns

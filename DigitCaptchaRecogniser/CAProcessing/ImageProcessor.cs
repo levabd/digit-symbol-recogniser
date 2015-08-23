@@ -121,7 +121,7 @@ namespace ContourAnalysisNS
             return foundTemplatesInput;
         }
 
-        public List<FoundTemplateDesc> FindTemplatesNonParalel(List<Contour<Point>> inputContours, bool detailed = false, bool more8than0 = false, bool more9than0 = false, bool more6than0 = false)
+        public List<FoundTemplateDesc> FindTemplatesNonParalel(List<Contour<Point>> inputContours, bool detailed = false, bool rather6 = false, bool rather8 = false, bool rather9 = false)
         {
             List<FoundTemplateDesc> foundTemplatesInput = new List<FoundTemplateDesc>();
 
@@ -137,7 +137,7 @@ namespace ContourAnalysisNS
 
                     if (!onlyFindContours)
                     {
-                        FoundTemplateDesc desc = detailed ? finder.FindTemplateByNorma(templates, sample) : finder.FindTemplate(templates, sample);
+                        FoundTemplateDesc desc = detailed ? finder.FindTemplateByNorma(templates, sample, rather6, rather8, rather9) : finder.FindTemplate(templates, sample);
                         //if (desc != null)
                         foundTemplatesInput.Add(desc);
                     }

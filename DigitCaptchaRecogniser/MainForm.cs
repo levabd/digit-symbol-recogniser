@@ -80,65 +80,26 @@ namespace DigitCaptchaRecogniser
                     digits[digitCounter].NormalDigitHeight = _appSettings.NormalDigitHeight;
                     digits[digitCounter].CropDigitAddHeight(_appSettings.ImageVerticalBorder, ColorTranslator.FromHtml("#1B65AA"));
                     digits[digitCounter].Kuwahara(_appSettings.KuwaharaCore);
-                    digitBoxes[digitCounter].Image = digits[digitCounter].Digit;
+                    digitBoxes[digitCounter].Image = digits[digitCounter].DisplayNoise(Color.Red, _appSettings.NoiseObjectThreshold);
                     digits[digitCounter].Threshold(_appSettings.Threshold);
-                    gaussDigitControlBoxes[digitCounter].Image = digits[digitCounter].DisplayNoise(Color.Red, _appSettings.NoiseObjectThreshold);
                     digits[digitCounter].RemoveNoise(_appSettings.NoiseObjectThreshold);
                     digits[digitCounter].Blur(1, 1);
                     digits[digitCounter].Threshold(120);
-                    
-                    CaptchaDigit histohramDigit = new CaptchaDigit(digits[digitCounter].Digit);
-                    histohramDigit.Median(0);
-                    histohramDigit.RemoveNoise(10);
-                    contourDigits[digitCounter].Image = histohramDigit.Digit.CropUnwantedBackground();
-                    using (Graphics g = Graphics.FromImage(contourDigits[digitCounter].Image))
-                    {
-                        if ((histohramDigit.Digit.CropUnwantedBackground().Crop(new Rectangle(0, 22, 7, 4)).GetHistogram().Values[254] < 9) &&
-                            histohramDigit.Digit.CropUnwantedBackground().Crop(new Rectangle(7, 17, 7, 7)).GetHistogram().Values[254] > 4)
-                        {
-                            g.FillRectangle(new SolidBrush(Color.White), new Rectangle(0, 22, 7, 7));
-                            g.DrawRectangle(new Pen(Color.Red), new Rectangle(0, 22, 7, 7));
-                            g.DrawString("9", new Font(FontFamily.GenericSansSerif, 5), new SolidBrush(Color.Black), new RectangleF(0, 22, 5, 6));
-
-                        }
-                        else if (histohramDigit.Digit.CropUnwantedBackground()
-                          .Crop(new Rectangle(16, 7, 8, 4))
-                          .GetHistogram()
-                          .Values[254] < 6)
-                        {
-                            g.FillRectangle(new SolidBrush(Color.White), new Rectangle(16, 7, 7, 7));
-                            g.DrawRectangle(new Pen(Color.Red), new Rectangle(16, 7, 7, 7));
-                            g.DrawString("6", new Font(FontFamily.GenericSansSerif, 5), new SolidBrush(Color.Black), new RectangleF(16, 7, 5, 6));
-
-                        }
-                        else if (histohramDigit.Digit.CropUnwantedBackground()
-                                .Crop(new Rectangle(7, 13, 7, 7))
-                                .GetHistogram()
-                                .Values[254] > 10)
-                        {
-                            g.FillRectangle(new SolidBrush(Color.White), new Rectangle(7, 13, 7, 7));
-                            g.DrawRectangle(new Pen(Color.Red), new Rectangle(7, 13, 7, 7));
-                            g.DrawString("8", new Font(FontFamily.GenericSansSerif, 5), new SolidBrush(Color.Black), new RectangleF(8, 14, 5, 6));
-                        }
-                        //g.DrawRectangle(new Pen(Color.Red), new Rectangle(6, 17, 7, 7));
-                    }
-
-                    digitTextBoxes[digitCounter].Text = histohramDigit.Digit.CropUnwantedBackground().Crop(new Rectangle(0, 22, 7, 4)).GetHistogram().Values[254] + " + " + 
-                        histohramDigit.Digit.CropUnwantedBackground().Crop(new Rectangle(7, 17, 7, 7)).GetHistogram().Values[254];
-                    
-                    /*contourDigits[digitCounter].Image = digits[digitCounter].DisplayAdaptiveThreshold(0.7, 1);*/
+                    gaussDigitControlBoxes[digitCounter].Image = digits[digitCounter].Display6890();
+                    digits[digitCounter].TryToDetect6890();
+                    contourDigits[digitCounter].Image = digits[digitCounter].DisplayAdaptiveThreshold(0.7, 1);
                     digits[digitCounter].MergeContours(_appSettings.ContoursRatio, 0.7, 1);
                     digits[digitCounter].Median(0);
                     lastContourDigits[digitCounter].Image = digits[digitCounter].DisplayAllContours(_processor, Color.Red, Color.GreenYellow, Color.Blue);
                     digits[digitCounter].FindBestContour(_processor, _appSettings.ContoursRatio);
                     digits[digitCounter].FindTemplate(_processor);
                     correlationBoxes[digitCounter].Image = digits[digitCounter].DisplayContoursCorrelation(_appSettings.CorrelationWidth, _appSettings.CorrelationHeight);
-                    /*digits[digitCounter].Recognise(_processor);
+                    digits[digitCounter].Recognise(_processor);
                     recognisedText[digitCounter] = digits[digitCounter].Recognised;
                     _templates[digitCounter] = digits[digitCounter].ContourTemplate;
                     digitTextBoxes[digitCounter].Text = digits[digitCounter].Recognised ? digits[digitCounter].Cifre.ToString() : "*";
                     templateLabels[digitCounter].Text = digits[digitCounter].Recognised ? @"Template Index: " + digits[digitCounter].ContourTemplate.index : "";
-                    textBoxAllDigits.Text += digitTextBoxes[digitCounter].Text;*/
+                    textBoxAllDigits.Text += digitTextBoxes[digitCounter].Text;
                 }
             }
             catch (Exception ex)

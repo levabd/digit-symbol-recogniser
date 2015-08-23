@@ -23,6 +23,12 @@ namespace DigitCaptchaRecogniser
         private Contour<Point> _contour;
         private Template _contourTemplate;
 
+        private bool _rather6;
+        private bool _rather8;
+        private bool _rather9;
+
+        #region Properties
+
         public int Cifre
         {
             get { return _cifre; }
@@ -57,63 +63,23 @@ namespace DigitCaptchaRecogniser
 
         public int NormalDigitHeight { get; set; }
 
-        public Histogram DigitHistogram()
-        {
-            Grayscale grayScaler = new Grayscale(0.2125, 0.7154, 0.0721);
-            ImageStatistics stat = new ImageStatistics(grayScaler.Apply(new Bitmap(_digit)));
-            return stat.Gray;
-        }
+        #endregion Properties
+
+        #region Constructor
 
         public CaptchaDigit(Image image)
         {
             _cifre = -1;
             _digit = image;
             _recognised = false;
+            _rather6 = false;
+            _rather8 = false;
+            _rather9 = false;
         }
 
-        public void Kuwahara(int kuwaharaCore)
-        {
-            _digit = _digit.Kuwahara(kuwaharaCore).Kuwahara(kuwaharaCore);
-        }
+        #endregion Constructor
 
-        public void HitAndMiss()
-        {
-            var se = new short[,] { { -1, -1, -1 },
-                                    {  1,  1,  0 },
-                                    { -1, -1, -1 } };
-
-            HitAndMiss filter = new HitAndMiss(se, AForge.Imaging.Filters.HitAndMiss.Modes.Thinning);
-            Grayscale grayScaler = new Grayscale(0.2125, 0.7154, 0.0721);
-            _digit = filter.Apply(grayScaler.Apply(new Bitmap(_digit)));
-        }
-
-        public void Dilatate()
-        {
-            var se = new short[,] {  {1, 1, 1},
-                                     {1, 1, 1},
-                                     {1, 1, 1}  };
-
-            Grayscale grayScaler = new Grayscale(0.2125, 0.7154, 0.0721);
-            Dilatation dilatationFilter = new Dilatation(se);
-            _digit = dilatationFilter.Apply(grayScaler.Apply(new Bitmap(_digit)));
-        }
-
-        public void ClosingMorfology()
-        {
-            Grayscale grayScaler = new Grayscale(0.2125, 0.7154, 0.0721);
-            Closing closingFilter = new Closing();
-            _digit = closingFilter.Apply(grayScaler.Apply(new Bitmap(_digit)));
-        }
-
-        public void Threshold(byte threshold)
-        {
-            _digit = _digit.Grayscale().Threshold(threshold);
-        }
-
-        public void ThresholdContour(byte threshold)
-        {
-            _filledContour = _filledContour.Grayscale().Threshold(threshold);
-        }
+        #region Display methods
 
         /// <summary>
         /// Display little noise object on image
@@ -215,6 +181,129 @@ namespace DigitCaptchaRecogniser
             return grayFrame.ToBitmap();
         }
 
+        public Image Display6890()
+        {
+            CaptchaDigit histohramDigit = new CaptchaDigit(_digit);
+            histohramDigit.Median(0);
+            histohramDigit.RemoveNoise(10);
+            Bitmap image = histohramDigit.Digit.CropUnwantedBackground();
+            using (Graphics g = Graphics.FromImage(image))
+            {
+                if ((histohramDigit.Digit.CropUnwantedBackground().Crop(new Rectangle(0, 22, 4, 4)).GetHistogram().Values[254] < 5) &&
+                    (histohramDigit.Digit.CropUnwantedBackground().Crop(new Rectangle(7, 18, 7, 7)).GetHistogram().Values[254] > 4) &&
+                    (histohramDigit.Digit.CropUnwantedBackground().Crop(new Rectangle(0, 13, 7, 7)).GetHistogram().Values[254] > 10))
+                {
+                    g.FillRectangle(new SolidBrush(Color.White), new Rectangle(0, 22, 8, 7));
+                    g.DrawRectangle(new Pen(Color.Red), new Rectangle(0, 22, 8, 7));
+                    g.DrawString("9", new Font(FontFamily.GenericSansSerif, 5), new SolidBrush(Color.Black), new RectangleF(0, 22, 5, 6));
+
+                }
+                else if ((histohramDigit.Digit.CropUnwantedBackground().Crop(new Rectangle(15, 6, 4, 4)).GetHistogram().Values[254] < 10) &&
+                    (histohramDigit.Digit.CropUnwantedBackground().Crop(new Rectangle(7, 13, 7, 7)).GetHistogram().Values[254] > 4) &&
+                    (histohramDigit.Digit.CropUnwantedBackground().Crop(new Rectangle(0, 13, 5, 5)).GetHistogram().Values[254] > 12))
+                {
+                    g.FillRectangle(new SolidBrush(Color.White), new Rectangle(15, 6, 7, 7));
+                    g.DrawRectangle(new Pen(Color.Red), new Rectangle(15, 6, 7, 7));
+                    g.DrawString("6", new Font(FontFamily.GenericSansSerif, 5), new SolidBrush(Color.Black), new RectangleF(15, 6, 5, 6));
+
+                }
+                else if (histohramDigit.Digit.CropUnwantedBackground().Crop(new Rectangle(7, 9, 7, 15)).GetHistogram().Values[254] > 10)
+                {
+                    g.FillRectangle(new SolidBrush(Color.White), new Rectangle(7, 9, 7, 15));
+                    g.DrawRectangle(new Pen(Color.Red), new Rectangle(7, 9, 7, 15));
+                    g.DrawString("8", new Font(FontFamily.GenericSansSerif, 5), new SolidBrush(Color.Black), new RectangleF(8, 14, 5, 6));
+                }
+            }
+
+            return image;
+        }
+
+        #endregion Display methods
+
+        public Histogram DigitHistogram()
+        {
+            Grayscale grayScaler = new Grayscale(0.2125, 0.7154, 0.0721);
+            ImageStatistics stat = new ImageStatistics(grayScaler.Apply(new Bitmap(_digit)));
+            return stat.Gray;
+        }
+
+        #region ImageProcessing
+
+        public void Kuwahara(int kuwaharaCore)
+        {
+            _digit = _digit.Kuwahara(kuwaharaCore).Kuwahara(kuwaharaCore);
+        }
+
+        public void HitAndMiss()
+        {
+            var se = new short[,] { { -1, -1, -1 },
+                                    {  1,  1,  0 },
+                                    { -1, -1, -1 } };
+
+            HitAndMiss filter = new HitAndMiss(se, AForge.Imaging.Filters.HitAndMiss.Modes.Thinning);
+            Grayscale grayScaler = new Grayscale(0.2125, 0.7154, 0.0721);
+            _digit = filter.Apply(grayScaler.Apply(new Bitmap(_digit)));
+        }
+
+        public void Dilatate()
+        {
+            var se = new short[,] {  {1, 1, 1},
+                                     {1, 1, 1},
+                                     {1, 1, 1}  };
+
+            Grayscale grayScaler = new Grayscale(0.2125, 0.7154, 0.0721);
+            Dilatation dilatationFilter = new Dilatation(se);
+            _digit = dilatationFilter.Apply(grayScaler.Apply(new Bitmap(_digit)));
+        }
+
+        public void ClosingMorfology()
+        {
+            Grayscale grayScaler = new Grayscale(0.2125, 0.7154, 0.0721);
+            Closing closingFilter = new Closing();
+            _digit = closingFilter.Apply(grayScaler.Apply(new Bitmap(_digit)));
+        }
+
+        public void OtsuThreshold()
+        {
+            _digit = _digit.Grayscale().OtsuThreshold();
+        }
+
+        public void Threshold(byte threshold)
+        {
+            _digit = _digit.Grayscale().Threshold(threshold);
+        }
+
+        public void ThresholdContour(byte threshold)
+        {
+            _filledContour = _filledContour.Grayscale().Threshold(threshold);
+        }
+
+        public void AdaptiveThreshold(double adaptiveThresholdParameter, int adaptiveThresholdBlockSize)
+        {
+            Image<Gray, byte> grayFrame = new Image<Gray, byte>(new Bitmap(_digit));
+            //CvInvoke.cvAdaptiveThreshold(grayFrame, grayFrame, 255, ADAPTIVE_THRESHOLD_TYPE.CV_ADAPTIVE_THRESH_MEAN_C, THRESH.CV_THRESH_BINARY,
+            //        adaptiveThresholdBlockSize + adaptiveThresholdBlockSize % 2 + 1, adaptiveThresholdParameter);
+            CvInvoke.cvAdaptiveThreshold(grayFrame, grayFrame, 255, ADAPTIVE_THRESHOLD_TYPE.CV_ADAPTIVE_THRESH_GAUSSIAN_C, THRESH.CV_THRESH_BINARY,
+                adaptiveThresholdBlockSize + adaptiveThresholdBlockSize % 2 + 1, adaptiveThresholdParameter);
+            //grayFrame._Not();
+            _digit = grayFrame.ToBitmap();
+        }
+
+        public void Blur(double gaussSigma, int gaussKernelSize)
+        {
+            _digit = _digit.Gauss(gaussSigma, gaussKernelSize);
+        }
+
+        public void BlurContour(double gaussSigma, int gaussKernelSize)
+        {
+            _filledContour = _filledContour.Gauss(gaussSigma, gaussKernelSize);
+        }
+
+        public void Median(int kernel)
+        {
+            _digit = _digit.Median(kernel);
+        }
+
         /// <summary>
         /// Remove little noise object on binary image
         /// </summary>
@@ -241,6 +330,10 @@ namespace DigitCaptchaRecogniser
             _digit = tempBitmap;
         }
 
+        #endregion ImageProcessing
+
+        #region ContourProcessing
+
         public void CropDigitAddHeight(int imageVerticalBorder, Color color)
         {
             Image newDigit = new Bitmap(NormalDigitWidth, NormalDigitHeight);
@@ -258,22 +351,6 @@ namespace DigitCaptchaRecogniser
             }
 
             _digit = newDigit;
-        }
-
-        public void Blur(double gaussSigma, int gaussKernelSize)
-        {
-            _digit = _digit.Gauss(gaussSigma, gaussKernelSize);
-        }
-
-        public void AdaptiveThreshold(double adaptiveThresholdParameter, int adaptiveThresholdBlockSize)
-        {
-            Image<Gray, byte> grayFrame = new Image<Gray, byte>(new Bitmap(_digit));
-            //CvInvoke.cvAdaptiveThreshold(grayFrame, grayFrame, 255, ADAPTIVE_THRESHOLD_TYPE.CV_ADAPTIVE_THRESH_MEAN_C, THRESH.CV_THRESH_BINARY,
-            //        adaptiveThresholdBlockSize + adaptiveThresholdBlockSize % 2 + 1, adaptiveThresholdParameter);
-            CvInvoke.cvAdaptiveThreshold(grayFrame, grayFrame, 255, ADAPTIVE_THRESHOLD_TYPE.CV_ADAPTIVE_THRESH_GAUSSIAN_C, THRESH.CV_THRESH_BINARY,
-                adaptiveThresholdBlockSize + adaptiveThresholdBlockSize % 2 + 1, adaptiveThresholdParameter);
-            //grayFrame._Not();
-            _digit = grayFrame.ToBitmap();
         }
 
         public void FillAllContours(ImageProcessor processor, double owerflowContoursRatio)
@@ -373,6 +450,38 @@ namespace DigitCaptchaRecogniser
             _filledContour = newFill;
         }
 
+        #endregion ContourProcessing
+
+        #region Regognise
+
+        public void TryToDetect6890()
+        {
+            CaptchaDigit histohramDigit = new CaptchaDigit(_digit);
+            histohramDigit.Median(0);
+            histohramDigit.RemoveNoise(10);
+            Bitmap image = histohramDigit.Digit.CropUnwantedBackground();
+            using (Graphics g = Graphics.FromImage(image))
+            {
+                if ((histohramDigit.Digit.CropUnwantedBackground().Crop(new Rectangle(0, 22, 4, 4)).GetHistogram().Values[254] < 5) &&
+                    (histohramDigit.Digit.CropUnwantedBackground().Crop(new Rectangle(7, 18, 7, 7)).GetHistogram().Values[254] > 4) &&
+                    (histohramDigit.Digit.CropUnwantedBackground().Crop(new Rectangle(0, 13, 7, 7)).GetHistogram().Values[254] > 10))
+                {
+                    _rather9 = true;
+                }
+                else if ((histohramDigit.Digit.CropUnwantedBackground().Crop(new Rectangle(15, 6, 4, 4)).GetHistogram().Values[254] < 10) &&
+                    (histohramDigit.Digit.CropUnwantedBackground().Crop(new Rectangle(7, 13, 7, 7)).GetHistogram().Values[254] > 4) &&
+                    (histohramDigit.Digit.CropUnwantedBackground().Crop(new Rectangle(0, 13, 5, 5)).GetHistogram().Values[254] > 12))
+                {
+                    _rather6 = true;
+
+                }
+                else if (histohramDigit.Digit.CropUnwantedBackground().Crop(new Rectangle(7, 9, 7, 15)).GetHistogram().Values[254] > 10)
+                {
+                    _rather8 = true;
+                }
+            }
+        }
+
         public void FindTemplate(ImageProcessor processor)
         {
             var contours = new List<Contour<Point>>();
@@ -385,7 +494,7 @@ namespace DigitCaptchaRecogniser
         {
             var contours = new List<Contour<Point>>();
             contours.Add(_contour);
-            List<FoundTemplateDesc> recognisedDigits = processor.FindTemplatesNonParalel(contours, true);
+            List<FoundTemplateDesc> recognisedDigits = processor.FindTemplatesNonParalel(contours, true, _rather6, _rather8, _rather9);
             if (recognisedDigits[0] == null)
             {
                 _recognised = false;
@@ -398,20 +507,9 @@ namespace DigitCaptchaRecogniser
             }
         }
 
-        public void BlurContour(double gaussSigma, int gaussKernelSize)
-        {
-            _filledContour = _filledContour.Gauss(gaussSigma, gaussKernelSize);
-        }
+        #endregion Regognise
 
-        public void OtsuThreshold()
-        {
-            _digit = _digit.Grayscale().OtsuThreshold();
-        }
-        
-        public void Median(int kernel)
-        {
-            _digit = _digit.Median(kernel);
-        }
+        #region Private methods
 
         private int SortContour(ImageProcessor processor, out int secondLongestContourIndex)
         {
@@ -429,5 +527,7 @@ namespace DigitCaptchaRecogniser
             }
             return longestContourIndex;
         }
+
+        #endregion Private
     }
 }
