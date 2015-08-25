@@ -250,7 +250,7 @@ namespace DigitCaptchaRecogniser.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("2")]
+        [global::System.Configuration.DefaultSettingValueAttribute("6")]
         public double MaxACFNormaDeviation1 {
             get {
                 return ((double)(this["MaxACFNormaDeviation1"]));
@@ -259,7 +259,7 @@ namespace DigitCaptchaRecogniser.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("2")]
+        [global::System.Configuration.DefaultSettingValueAttribute("6")]
         public double MaxACFNormaDeviation2 {
             get {
                 return ((double)(this["MaxACFNormaDeviation2"]));
@@ -268,7 +268,7 @@ namespace DigitCaptchaRecogniser.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("2")]
+        [global::System.Configuration.DefaultSettingValueAttribute("6")]
         public double MaxACFNormaDeviation3 {
             get {
                 return ((double)(this["MaxACFNormaDeviation3"]));
@@ -286,7 +286,7 @@ namespace DigitCaptchaRecogniser.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("2")]
+        [global::System.Configuration.DefaultSettingValueAttribute("6")]
         public double MaxACFNormaDeviation5 {
             get {
                 return ((double)(this["MaxACFNormaDeviation5"]));
@@ -295,7 +295,7 @@ namespace DigitCaptchaRecogniser.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        [global::System.Configuration.DefaultSettingValueAttribute("6")]
         public double MaxACFNormaDeviation6 {
             get {
                 return ((double)(this["MaxACFNormaDeviation6"]));
@@ -304,7 +304,7 @@ namespace DigitCaptchaRecogniser.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("2")]
+        [global::System.Configuration.DefaultSettingValueAttribute("6")]
         public double MaxACFNormaDeviation7 {
             get {
                 return ((double)(this["MaxACFNormaDeviation7"]));

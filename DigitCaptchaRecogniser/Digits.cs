@@ -26,6 +26,7 @@ namespace DigitCaptchaRecogniser
         private bool _rather6;
         private bool _rather8;
         private bool _rather9;
+        private bool _rather0;
 
         #region Properties
 
@@ -459,26 +460,27 @@ namespace DigitCaptchaRecogniser
             CaptchaDigit histohramDigit = new CaptchaDigit(_digit);
             histohramDigit.Median(0);
             histohramDigit.RemoveNoise(10);
-            Bitmap image = histohramDigit.Digit.CropUnwantedBackground();
-            using (Graphics g = Graphics.FromImage(image))
-            {
-                if ((histohramDigit.Digit.CropUnwantedBackground().Crop(new Rectangle(0, 22, 4, 4)).GetHistogram().Values[254] < 5) &&
-                    (histohramDigit.Digit.CropUnwantedBackground().Crop(new Rectangle(7, 18, 7, 7)).GetHistogram().Values[254] > 4) &&
-                    (histohramDigit.Digit.CropUnwantedBackground().Crop(new Rectangle(0, 13, 7, 7)).GetHistogram().Values[254] > 10))
-                {
-                    _rather9 = true;
-                }
-                else if ((histohramDigit.Digit.CropUnwantedBackground().Crop(new Rectangle(15, 6, 4, 4)).GetHistogram().Values[254] < 10) &&
-                    (histohramDigit.Digit.CropUnwantedBackground().Crop(new Rectangle(7, 13, 7, 7)).GetHistogram().Values[254] > 4) &&
-                    (histohramDigit.Digit.CropUnwantedBackground().Crop(new Rectangle(0, 13, 5, 5)).GetHistogram().Values[254] > 12))
-                {
-                    _rather6 = true;
 
-                }
-                else if (histohramDigit.Digit.CropUnwantedBackground().Crop(new Rectangle(7, 9, 7, 15)).GetHistogram().Values[254] > 10)
-                {
-                    _rather8 = true;
-                }
+            if ((histohramDigit.Digit.CropUnwantedBackground().Crop(new Rectangle(0, 22, 4, 4)).GetHistogram().Values[254] < 5) &&
+                (histohramDigit.Digit.CropUnwantedBackground().Crop(new Rectangle(7, 18, 7, 7)).GetHistogram().Values[254] > 4) &&
+                (histohramDigit.Digit.CropUnwantedBackground().Crop(new Rectangle(0, 13, 7, 7)).GetHistogram().Values[254] > 10))
+            {
+                _rather9 = true;
+            }
+            else if ((histohramDigit.Digit.CropUnwantedBackground().Crop(new Rectangle(15, 6, 4, 4)).GetHistogram().Values[254] < 10) &&
+                (histohramDigit.Digit.CropUnwantedBackground().Crop(new Rectangle(7, 13, 7, 7)).GetHistogram().Values[254] > 4) &&
+                (histohramDigit.Digit.CropUnwantedBackground().Crop(new Rectangle(0, 13, 5, 5)).GetHistogram().Values[254] > 12))
+            {
+                _rather6 = true;
+
+            }
+            else if (histohramDigit.Digit.CropUnwantedBackground().Crop(new Rectangle(7, 9, 7, 15)).GetHistogram().Values[254] > 10)
+            {
+                _rather8 = true;
+            }
+            else
+            {
+                _rather0 = true;
             }
         }
 
@@ -494,7 +496,7 @@ namespace DigitCaptchaRecogniser
         {
             var contours = new List<Contour<Point>>();
             contours.Add(_contour);
-            List<FoundTemplateDesc> recognisedDigits = processor.FindTemplatesNonParalel(contours, true, _rather6, _rather8, _rather9);
+            List<FoundTemplateDesc> recognisedDigits = processor.FindTemplatesNonParalel(contours, true, _rather6, _rather8, _rather9, _rather0);
             if (recognisedDigits[0] == null)
             {
                 _recognised = false;

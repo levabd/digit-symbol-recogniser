@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms;
 using ContourAnalysisNS;
@@ -40,6 +43,49 @@ namespace DigitCaptchaRecogniser
             InitProcessors();
         }
 
+        #region Hotkeys
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == (Keys.Enter))
+            {
+                ImageProceed(imagePath.Text);  
+                return true;
+            }
+
+            if (keyData == (Keys.Right))
+            {
+                imagePath.Text = Directory.EnumerateFiles(Path.GetDirectoryName(imagePath.Text)).Skip(GetCurrentFileImdex(imagePath.Text) + 1).First();
+                ImageProceed(imagePath.Text);
+                return true;
+            }
+
+            if (keyData == (Keys.Left))
+            {
+                imagePath.Text = Directory.EnumerateFiles(Path.GetDirectoryName(imagePath.Text)).Skip(GetCurrentFileImdex(imagePath.Text) - 1).First();
+                ImageProceed(imagePath.Text);
+                return true;
+            }
+
+            if (keyData == (Keys.Insert))
+            {
+                Teach();
+                return true;
+            }
+
+            if (keyData == (Keys.Control | Keys.S))
+            {
+                SaveTeachedValue();
+                return true;
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        #endregion
+
+        #region ButtonsClick
+
         private void loadImage_Click(object sender, EventArgs e)
         {
             if (openImageDialog.ShowDialog() == DialogResult.OK)
@@ -50,11 +96,51 @@ namespace DigitCaptchaRecogniser
             }
         }
 
-        private void imagePath_KeyPress(object sender, KeyPressEventArgs e)
+        private void buttonNext_Click(object sender, EventArgs e)
         {
-            if (e.KeyChar == Convert.ToChar(Keys.Enter))
-                ImageProceed(imagePath.Text);
+            imagePath.Text = Directory.EnumerateFiles(Path.GetDirectoryName(imagePath.Text)).Skip(GetCurrentFileImdex(imagePath.Text) + 1).First();
+
+            ImageProceed(imagePath.Text);
         }
+
+        private void buttonPrew_Click(object sender, EventArgs e)
+        {
+            imagePath.Text = Directory.EnumerateFiles(Path.GetDirectoryName(imagePath.Text)).Skip(GetCurrentFileImdex(imagePath.Text) - 1).First();
+
+            ImageProceed(imagePath.Text);
+        }
+
+        private void buttonRefresh_Click(object sender, EventArgs e)
+        {
+            ImageProceed(imagePath.Text);
+        }
+
+        private void buttonTeach_Click(object sender, EventArgs e)
+        {
+            Teach();
+        }
+
+        private void buttonReload_Click(object sender, EventArgs e)
+        {
+            InitProcessors();
+        }
+
+        private void buttonSave_Click(object sender, EventArgs e)
+        {
+            SaveTeachedValue();
+        }
+
+        private void buttonSelectTeached_Click(object sender, EventArgs e)
+        {
+            if (openCsvFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                labelTeachedFile.Text = openCsvFileDialog.FileName;
+            }
+        }
+
+        #endregion
+
+        #region Recognize
 
         private void ImageProceed(string path)
         {
@@ -66,6 +152,8 @@ namespace DigitCaptchaRecogniser
             {
                 return;
             }
+
+            InitProcessors();
 
             //sourceImage.Image = sourceImage.Image.Grayscale().Median(0).Threshold(200);
 
@@ -86,7 +174,8 @@ namespace DigitCaptchaRecogniser
                     digits[digitCounter].Blur(1, 1);
                     digits[digitCounter].Threshold(120);
                     gaussDigitControlBoxes[digitCounter].Image = digits[digitCounter].Display6890();
-                    digits[digitCounter].TryToDetect6890();
+                    if (differences0689.Checked)
+                        digits[digitCounter].TryToDetect6890();
                     contourDigits[digitCounter].Image = digits[digitCounter].DisplayAdaptiveThreshold(0.7, 1);
                     digits[digitCounter].MergeContours(_appSettings.ContoursRatio, 0.7, 1);
                     digits[digitCounter].Median(0);
@@ -107,18 +196,22 @@ namespace DigitCaptchaRecogniser
                 MessageBox.Show(ex.Message);
             }
 
-            if (checkBoxSaveFiles.Checked) 
+            digit1Text.Focus();
+
+            if (checkBoxSaveFiles.Checked)
                 PrintImages(path);
         }
 
-        private void buttonTeach_Click(object sender, EventArgs e)
+        private void Teach()
         {
             int[] teachedTexts = new int[5];
             for (int teachedTextCounter = 0; teachedTextCounter < digitTextBoxes.Length; teachedTextCounter++)
-                teachedTexts[teachedTextCounter] = (recognisedText[teachedTextCounter]) ? -1 : digitTextBoxes[teachedTextCounter].Text.SafeToInt(-1);
-            
+                teachedTexts[teachedTextCounter] = (recognisedText[teachedTextCounter])
+                    ? -1
+                    : digitTextBoxes[teachedTextCounter].Text.SafeToInt(-1);
 
-            for(int teachedDigitCounter = 0; teachedDigitCounter < teachedTexts.Length; teachedDigitCounter++)
+
+            for (int teachedDigitCounter = 0; teachedDigitCounter < teachedTexts.Length; teachedDigitCounter++)
             {
                 if (teachedTexts[teachedDigitCounter] > -1)
                 {
@@ -128,8 +221,12 @@ namespace DigitCaptchaRecogniser
             }
 
             SaveTemplates(Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName) +
-                Path.DirectorySeparatorChar + _appSettings.TemplatesFile, _processor);
+                          Path.DirectorySeparatorChar + _appSettings.TemplatesFile, _processor);
         }
+
+        #endregion
+
+        #region Templates workaround
 
         private void SaveTemplates(string fileName, ImageProcessor proc)
         {
@@ -157,6 +254,43 @@ namespace DigitCaptchaRecogniser
             }
         }
 
+        private void InitProcessors()
+        {
+            _processor = new ImageProcessor();
+            _processor.equalizeHist = false;
+            //_processor.finder.maxRotateAngle = differences69.Checked ? Math.PI/49 : Math.PI;
+            _processor.finder.maxRotateAngle = differences69.Checked ? _appSettings.MaxAngle : Math.PI;
+            _processor.finder.maxRotateAngle = differences0689.Checked ? _appSettings.MaxAngleForSeven : Math.PI;
+            _processor.minContourArea = _appSettings.MinContourArea;
+            _processor.minContourLength = _appSettings.MinContourLength;
+            _processor.finder.maxACFDescriptorDeviation = _appSettings.MaxACFDescriptorDeviation; //Auto correlation deviation
+            _processor.finder.maxACFNormaDeviation = _appSettings.MaxACFNormaDeviation0; //Auto correlation norma deviation
+            _processor.finder.maxACFNormaDeviation0 = _appSettings.MaxACFNormaDeviation0;
+            _processor.finder.maxACFNormaDeviation1 = _appSettings.MaxACFNormaDeviation1;
+            _processor.finder.maxACFNormaDeviation2 = _appSettings.MaxACFNormaDeviation2;
+            _processor.finder.maxACFNormaDeviation3 = _appSettings.MaxACFNormaDeviation3;
+            _processor.finder.maxACFNormaDeviation4 = _appSettings.MaxACFNormaDeviation4;
+            _processor.finder.maxACFNormaDeviation5 = _appSettings.MaxACFNormaDeviation5;
+            _processor.finder.maxACFNormaDeviation6 = _appSettings.MaxACFNormaDeviation6;
+            _processor.finder.maxACFNormaDeviation7 = _appSettings.MaxACFNormaDeviation7;
+            _processor.finder.maxACFNormaDeviation8 = _appSettings.MaxACFNormaDeviation8;
+            _processor.finder.maxACFNormaDeviation9 = _appSettings.MaxACFNormaDeviation9;
+            _processor.finder.minACF = _appSettings.MinACF;
+            _processor.finder.minICF = _appSettings.MinICF;
+            _processor.blur = false;
+            _processor.noiseFilter = false;
+            _processor.cannyThreshold = _appSettings.СannyThreshold;
+            _processor.adaptiveThresholdBlockSize = _appSettings.AdaptiveThresholdBlockSize;
+            _processor.adaptiveThresholdParameter = _appSettings.AdaptiveThresholdParameter; //false ? 1.5 : 0.5;
+
+            LoadTemplates(Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName) +
+                          Path.DirectorySeparatorChar + _appSettings.TemplatesFile, _processor);
+        }
+
+        #endregion
+
+        #region Utility
+
         private void PrintImages(string path)
         {
             string dirToWrite = Path.GetDirectoryName(path) + Path.DirectorySeparatorChar + Path.GetFileNameWithoutExtension(path);
@@ -181,48 +315,77 @@ namespace DigitCaptchaRecogniser
                     dirToWrite + Path.DirectorySeparatorChar + "correlation" + lastContourDigitsCounter + ".png", ImageFormat.Png);
             }
         }
-
-        private void buttonReload_Click(object sender, EventArgs e)
+        
+        private int GetCurrentFileImdex(string text)
         {
-            InitProcessors();
+            var filesEnumerator = Directory.EnumerateFiles(Path.GetDirectoryName(text));
+            int fileIndex = 0;
+
+            foreach (var file in filesEnumerator)
+            {
+                if (file == imagePath.Text)
+                    break;
+                fileIndex++;
+            }
+            return fileIndex;
         }
 
-        private void InitProcessors()
+        private void textBoxTestCount_KeyPress(object sender, KeyPressEventArgs e)
         {
-            _processor = new ImageProcessor();
-            _processor.equalizeHist = false;
-            //_processor.finder.maxRotateAngle = differences69.Checked ? Math.PI/49 : Math.PI;
-            _processor.finder.maxRotateAngle = differences69.Checked ? _appSettings.MaxAngle : Math.PI;
-            _processor.finder.maxRotateAngle = differences17.Checked ? _appSettings.MaxAngleForSeven : Math.PI;
-            _processor.minContourArea = _appSettings.MinContourArea;
-            _processor.minContourLength = _appSettings.MinContourLength;
-            _processor.finder.maxACFDescriptorDeviation = _appSettings.MaxACFDescriptorDeviation; //Auto correlation deviation
-            _processor.finder.maxACFNormaDeviation = _appSettings.MaxACFNormaDeviation0; //Auto correlation norma deviation
-            _processor.finder.maxACFNormaDeviation0 = _appSettings.MaxACFNormaDeviation0; 
-            _processor.finder.maxACFNormaDeviation1 = _appSettings.MaxACFNormaDeviation1; 
-            _processor.finder.maxACFNormaDeviation2 = _appSettings.MaxACFNormaDeviation2; 
-            _processor.finder.maxACFNormaDeviation3 = _appSettings.MaxACFNormaDeviation3; 
-            _processor.finder.maxACFNormaDeviation4 = _appSettings.MaxACFNormaDeviation4; 
-            _processor.finder.maxACFNormaDeviation5 = _appSettings.MaxACFNormaDeviation5; 
-            _processor.finder.maxACFNormaDeviation6 = _appSettings.MaxACFNormaDeviation6; 
-            _processor.finder.maxACFNormaDeviation7 = _appSettings.MaxACFNormaDeviation7; 
-            _processor.finder.maxACFNormaDeviation8 = _appSettings.MaxACFNormaDeviation8; 
-            _processor.finder.maxACFNormaDeviation9 = _appSettings.MaxACFNormaDeviation9; 
-            _processor.finder.minACF = _appSettings.MinACF;
-            _processor.finder.minICF = _appSettings.MinICF;
-            _processor.blur = false;
-            _processor.noiseFilter = false;
-            _processor.cannyThreshold = _appSettings.СannyThreshold;
-            _processor.adaptiveThresholdBlockSize = _appSettings.AdaptiveThresholdBlockSize;
-            _processor.adaptiveThresholdParameter = _appSettings.AdaptiveThresholdParameter; //false ? 1.5 : 0.5;
-
-            LoadTemplates(Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName) +
-                          Path.DirectorySeparatorChar + _appSettings.TemplatesFile, _processor);
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
 
-        private void digit5Text_TextChanged(object sender, EventArgs e)
+        private void SaveTeachedValue()
         {
+            try
+            {
+                ConcurrentDictionary<string, string> capthaList = new ConcurrentDictionary<string, string>(
+                    File.ReadLines(labelTeachedFile.Text)
+                        .Select(line => line.Split(','))
+                        .ToDictionary(line => line[0], line => line[1]));
+                if (!String.IsNullOrWhiteSpace(textBoxAllDigits.Text) && !String.IsNullOrWhiteSpace(imagePath.Text))
+                    capthaList.AddOrUpdate(imagePath.Text, textBoxAllDigits.Text);
 
+                File.WriteAllText(labelTeachedFile.Text,
+                    String.Join(Environment.NewLine, capthaList.Select(d => d.Key + "," + d.Value).OrderBy(key => key)));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        #endregion
+
+        private void buttonTest_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                List<string> errors = new List<string>();
+                Dictionary<string, string> capthaList = File.ReadLines(labelTeachedFile.Text)
+                            .Select(line => line.Split(','))
+                            .ToDictionary(line => line[0], line => line[1]);
+                for (int captchaCounter = 0;
+                    captchaCounter < Math.Min(Int16.Parse(textBoxTestCount.Text), capthaList.Count);
+                    captchaCounter++)
+                {
+                    imagePath.Text = capthaList.ElementAt(captchaCounter).Key;
+                    ImageProceed(imagePath.Text);
+                    if (textBoxAllDigits.Text != capthaList.ElementAt(captchaCounter).Value)
+                        errors.Add(imagePath.Text);
+                    Refresh();
+                }
+
+                using (ReportForm rForm = new ReportForm(errors, Math.Min(Int16.Parse(textBoxTestCount.Text), capthaList.Count)))
+                    rForm.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }      
         }
     }
 }
