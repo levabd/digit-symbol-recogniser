@@ -55,14 +55,28 @@ namespace DigitCaptchaRecogniser
 
             if (keyData == (Keys.Right))
             {
-                imagePath.Text = Directory.EnumerateFiles(Path.GetDirectoryName(imagePath.Text)).Skip(GetCurrentFileImdex(imagePath.Text) + 1).First();
+                try
+                {
+                    imagePath.Text = Directory.EnumerateFiles(Path.GetDirectoryName(imagePath.Text)).Skip(GetCurrentFileImdex(imagePath.Text) + 1).First();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
                 ImageProceed(imagePath.Text);
                 return true;
             }
 
             if (keyData == (Keys.Left))
             {
-                imagePath.Text = Directory.EnumerateFiles(Path.GetDirectoryName(imagePath.Text)).Skip(GetCurrentFileImdex(imagePath.Text) - 1).First();
+                try
+                {
+                    imagePath.Text = Directory.EnumerateFiles(Path.GetDirectoryName(imagePath.Text)).Skip(GetCurrentFileImdex(imagePath.Text) - 1).First();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
                 ImageProceed(imagePath.Text);
                 return true;
             }
@@ -98,14 +112,31 @@ namespace DigitCaptchaRecogniser
 
         private void buttonNext_Click(object sender, EventArgs e)
         {
-            imagePath.Text = Directory.EnumerateFiles(Path.GetDirectoryName(imagePath.Text)).Skip(GetCurrentFileImdex(imagePath.Text) + 1).First();
+            try
+            {
+                imagePath.Text =
+                    Directory.EnumerateFiles(Path.GetDirectoryName(imagePath.Text))
+                        .Skip(GetCurrentFileImdex(imagePath.Text) + 1)
+                        .First();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
             ImageProceed(imagePath.Text);
         }
 
         private void buttonPrew_Click(object sender, EventArgs e)
         {
-            imagePath.Text = Directory.EnumerateFiles(Path.GetDirectoryName(imagePath.Text)).Skip(GetCurrentFileImdex(imagePath.Text) - 1).First();
+            try
+            {
+                imagePath.Text = Directory.EnumerateFiles(Path.GetDirectoryName(imagePath.Text)).Skip(GetCurrentFileImdex(imagePath.Text) - 1).First();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
             ImageProceed(imagePath.Text);
         }
@@ -135,6 +166,34 @@ namespace DigitCaptchaRecogniser
             if (openCsvFileDialog.ShowDialog() == DialogResult.OK)
             {
                 labelTeachedFile.Text = openCsvFileDialog.FileName;
+            }
+        }
+
+        private void buttonTest_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                List<string> errors = new List<string>();
+                Dictionary<string, string> capthaList = File.ReadLines(labelTeachedFile.Text)
+                            .Select(line => line.Split(','))
+                            .ToDictionary(line => line[0], line => line[1]);
+                for (int captchaCounter = 0;
+                    captchaCounter < Math.Min(Int16.Parse(textBoxTestCount.Text), capthaList.Count);
+                    captchaCounter++)
+                {
+                    imagePath.Text = capthaList.ElementAt(captchaCounter).Key;
+                    ImageProceed(imagePath.Text);
+                    if (textBoxAllDigits.Text != capthaList.ElementAt(captchaCounter).Value)
+                        errors.Add(imagePath.Text);
+                    Refresh();
+                }
+
+                using (ReportForm rForm = new ReportForm(errors, Math.Min(Int16.Parse(textBoxTestCount.Text), capthaList.Count)))
+                    rForm.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -360,32 +419,5 @@ namespace DigitCaptchaRecogniser
 
         #endregion
 
-        private void buttonTest_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                List<string> errors = new List<string>();
-                Dictionary<string, string> capthaList = File.ReadLines(labelTeachedFile.Text)
-                            .Select(line => line.Split(','))
-                            .ToDictionary(line => line[0], line => line[1]);
-                for (int captchaCounter = 0;
-                    captchaCounter < Math.Min(Int16.Parse(textBoxTestCount.Text), capthaList.Count);
-                    captchaCounter++)
-                {
-                    imagePath.Text = capthaList.ElementAt(captchaCounter).Key;
-                    ImageProceed(imagePath.Text);
-                    if (textBoxAllDigits.Text != capthaList.ElementAt(captchaCounter).Value)
-                        errors.Add(imagePath.Text);
-                    Refresh();
-                }
-
-                using (ReportForm rForm = new ReportForm(errors, Math.Min(Int16.Parse(textBoxTestCount.Text), capthaList.Count)))
-                    rForm.ShowDialog();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }      
-        }
     }
 }
