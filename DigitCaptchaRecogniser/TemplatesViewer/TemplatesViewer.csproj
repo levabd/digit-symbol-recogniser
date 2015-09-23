@@ -102,12 +102,15 @@
   <ItemGroup>
     <Content Include="..\EmguCV\opencv_core220.dll">
       <Link>opencv_core220.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="..\EmguCV\opencv_highgui220.dll">
       <Link>opencv_highgui220.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="..\EmguCV\opencv_imgproc220.dll">
       <Link>opencv_imgproc220.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
