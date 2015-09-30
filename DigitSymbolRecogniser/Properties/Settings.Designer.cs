@@ -205,7 +205,7 @@ namespace DigitSymbolRecogniser.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0.1")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.76")]
         public double MinICF {
             get {
                 return ((double)(this["MinICF"]));
@@ -340,7 +340,7 @@ namespace DigitSymbolRecogniser.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0.06")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.0514")]
         public double MaxAngleForSeven {
             get {
                 return ((double)(this["MaxAngleForSeven"]));

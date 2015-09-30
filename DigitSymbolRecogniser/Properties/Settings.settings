@@ -63,7 +63,7 @@
       <Value Profile="(Default)">0.96</Value>
     </Setting>
     <Setting Name="MinICF" Type="System.Double" Scope="Application">
-      <Value Profile="(Default)">0.1</Value>
+      <Value Profile="(Default)">0.76</Value>
     </Setting>
     <Setting Name="СannyThreshold" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">50</Value>
@@ -108,7 +108,7 @@
       <Value Profile="(Default)">0.785</Value>
     </Setting>
     <Setting Name="MaxAngleForSeven" Type="System.Double" Scope="Application">
-      <Value Profile="(Default)">0.06</Value>
+      <Value Profile="(Default)">0.0514</Value>
     </Setting>
     <Setting Name="MaxACFDescriptorDeviation0" Type="System.Double" Scope="Application">
       <Value Profile="(Default)">5</Value>
