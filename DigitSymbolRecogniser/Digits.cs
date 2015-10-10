@@ -6,13 +6,13 @@ using AForge.Imaging;
 using AForge.Imaging.Filters;
 using AForge.Math;
 using ContourAnalysisNS;
-using DigitCaptchaRecogniser.Helpers;
+using DigitSymbolRecogniser.Helpers;
 using Emgu.CV;
 using Emgu.CV.CvEnum;
 using Emgu.CV.Structure;
 using Image = System.Drawing.Image;
 
-namespace DigitCaptchaRecogniser
+namespace DigitSymbolRecogniser
 {
     public class CaptchaDigit
     {

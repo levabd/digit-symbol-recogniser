@@ -1,4 +1,4 @@
-﻿namespace DigitCaptchaRecogniser
+﻿namespace DigitSymbolRecogniser
 {
     partial class MainForm
     {

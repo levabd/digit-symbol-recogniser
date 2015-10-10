@@ -6,7 +6,7 @@ using AForge.Imaging.Filters;
 using AForge.Math;
 using Image = System.Drawing.Image;
 
-namespace DigitCaptchaRecogniser.Helpers
+namespace DigitSymbolRecogniser.Helpers
 {
     public static class ImageHelper
     {

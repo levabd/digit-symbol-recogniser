@@ -1,4 +1,4 @@
-﻿namespace DigitCaptchaRecogniser.Properties {
+﻿namespace DigitSymbolRecogniser.Properties {
     
     
     // This class allows you to handle specific events on the settings class:

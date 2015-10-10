@@ -1,4 +1,4 @@
-﻿namespace DigitCaptchaRecogniser.Helpers
+﻿namespace DigitSymbolRecogniser.Helpers
 {
     public static class StringHelper
     {

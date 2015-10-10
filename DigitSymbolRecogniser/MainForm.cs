@@ -8,9 +8,9 @@ using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms;
 using ContourAnalysisNS;
-using DigitCaptchaRecogniser.Helpers;
+using DigitSymbolRecogniser.Helpers;
 
-namespace DigitCaptchaRecogniser
+namespace DigitSymbolRecogniser
 {
     public partial class MainForm : Form
     {

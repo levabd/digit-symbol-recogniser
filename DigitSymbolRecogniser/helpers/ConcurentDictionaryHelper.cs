@@ -1,6 +1,6 @@
 ﻿using System.Collections.Concurrent;
 
-namespace DigitCaptchaRecogniser.Helpers
+namespace DigitSymbolRecogniser.Helpers
 {
     public static class ConcurentDictionaryHelper
     {

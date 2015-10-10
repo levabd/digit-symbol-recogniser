@@ -7,8 +7,8 @@
     <ProjectGuid>{A44E504A-864D-4CA7-B513-924219FCA32C}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DigitCaptchaRecogniser</RootNamespace>
-    <AssemblyName>DigitCaptchaRecogniser</AssemblyName>
+    <RootNamespace>DigitSymbolRecogniser</RootNamespace>
+    <AssemblyName>DigitSymbolRecogniser</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -32,7 +32,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>DigitCaptchaRecogniser.Program</StartupObject>
+    <StartupObject>DigitSymbolRecogniser.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AForge, Version=1.1.0.0, Culture=neutral, PublicKeyToken=9a0d19ffd4e7fe67, processorArchitecture=MSIL">
@@ -101,6 +101,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="ReportForm.resx">
       <DependentUpon>ReportForm.cs</DependentUpon>
