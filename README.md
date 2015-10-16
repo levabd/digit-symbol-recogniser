@@ -1,10 +1,10 @@
 NOT FOR COMMERTIAL USE!!!
 Written only to demonstrate the possibilities of recognition noisy digits
 
-# digit-captcha-recogniser
+# Digit symbol recogniser
 Recognize noised captcha with only digit symbols using C#
 
-#Algorithm
+# Algorithm
 ![](./docPictures/source.png?raw=true)
 
 1. Cutting the numbers
@@ -26,3 +26,7 @@ Recognize noised captcha with only digit symbols using C#
 
 
 Угол меньше Pi/6.5
+
+# License
+
+Distributed under the [MIT license](LICENSE)
