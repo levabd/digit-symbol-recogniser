@@ -1,3 +1,6 @@
+NOT FOR COMMERTIAL USE!!!
+Written only to demonstrate the possibilities of recognition of noisy objects
+
 # digit-captcha-recogniser
 Recognize noised captcha with only digit symbols using C#
 
