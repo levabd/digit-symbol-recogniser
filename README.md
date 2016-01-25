@@ -20,3 +20,6 @@ Recognize noised captcha with only digit symbols using C#
 ![](./docPictures/lastContour0.png?raw=true) ![](./docPictures/lastContour3.png?raw=true)
 11. Contour analysis http://www.codeproject.com/Articles/196168/Contour-Analysis-for-Image-Recognition-in-C Deviation 2
 ![](./docPictures/correlation0.png?raw=true) ![](./docPictures/correlation3.png?raw=true)
+
+
+Угол меньше Pi/6.5
