@@ -23,6 +23,16 @@ namespace ContourAnalysisNS
         public double maxRotateAngle = Math.PI;
         public double maxRotateAngleForOneAndSeven = Math.PI / 49;
         public double maxACFDescriptorDeviation = 4;
+        public double maxACFDescriptorDeviation0 = 4;
+        public double maxACFDescriptorDeviation1 = 4;
+        public double maxACFDescriptorDeviation2 = 4;
+        public double maxACFDescriptorDeviation3 = 4;
+        public double maxACFDescriptorDeviation4 = 4;
+        public double maxACFDescriptorDeviation5 = 4;
+        public double maxACFDescriptorDeviation6 = 4;
+        public double maxACFDescriptorDeviation7 = 4;
+        public double maxACFDescriptorDeviation8 = 4;
+        public double maxACFDescriptorDeviation9 = 4;
         public double maxACFNormaDeviation = 1;
         public double maxACFNormaDeviation0 = 1;
         public double maxACFNormaDeviation1 = 1;
@@ -108,35 +118,65 @@ namespace ContourAnalysisNS
                 switch (template.name)
                 {
                     case "0":
-                        maxNormaDeviation = maxACFNormaDeviation0;
-                        break;
+                        {
+                            maxNormaDeviation = maxACFNormaDeviation0;
+                            maxACFDescriptorDeviation = maxACFDescriptorDeviation0;
+                            break;
+                        }
                     case "1":
-                        maxNormaDeviation = maxACFNormaDeviation1;
-                        break;
+                        {
+                            maxNormaDeviation = maxACFNormaDeviation1;
+                            maxACFDescriptorDeviation = maxACFDescriptorDeviation1;
+                            break;
+                        }
                     case "2":
-                        maxNormaDeviation = maxACFNormaDeviation2;
-                        break;
+                        {
+                            maxNormaDeviation = maxACFNormaDeviation2;
+                            maxACFDescriptorDeviation = maxACFDescriptorDeviation2;
+                            break;
+                        }
                     case "3":
-                        maxNormaDeviation = maxACFNormaDeviation3;
-                        break;
+                        {
+                            maxNormaDeviation = maxACFNormaDeviation3;
+                            maxACFDescriptorDeviation = maxACFDescriptorDeviation3;
+                            break;
+                        }
                     case "4":
-                        maxNormaDeviation = maxACFNormaDeviation4;
-                        break;
+                        {
+                            maxNormaDeviation = maxACFNormaDeviation4;
+                            maxACFDescriptorDeviation = maxACFDescriptorDeviation4;
+                            break;
+                        }
                     case "5":
-                        maxNormaDeviation = maxACFNormaDeviation5;
-                        break;
+                        {
+                            maxNormaDeviation = maxACFNormaDeviation5;
+                            maxACFDescriptorDeviation = maxACFDescriptorDeviation5;
+                            break;
+                        }
                     case "6":
-                        maxNormaDeviation = maxACFNormaDeviation6;
-                        break;
+                        {
+                            maxNormaDeviation = maxACFNormaDeviation6;
+                            maxACFDescriptorDeviation = maxACFDescriptorDeviation6;
+                            break;
+                        }
                     case "7":
-                        maxNormaDeviation = maxACFNormaDeviation7;
-                        break;
+                        {
+                            maxNormaDeviation = maxACFNormaDeviation7;
+                            maxACFDescriptorDeviation = maxACFDescriptorDeviation7;
+                            break;
+                        }
                     case "8":
-                        maxNormaDeviation = maxACFNormaDeviation8;
-                        break;
+                        {
+                            maxNormaDeviation = maxACFNormaDeviation8;
+                            maxACFDescriptorDeviation = maxACFDescriptorDeviation8;
+                            break;
+                        }
                     case "9":
-                        maxNormaDeviation = maxACFNormaDeviation9;
-                        break;
+                        {
+                            maxNormaDeviation = maxACFNormaDeviation9;
+                            maxACFDescriptorDeviation = maxACFDescriptorDeviation9;
+                            break;
+                        }
                 }
 
                 bool notDetected = false;

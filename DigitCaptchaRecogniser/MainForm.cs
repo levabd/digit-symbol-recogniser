@@ -322,6 +322,16 @@ namespace DigitCaptchaRecogniser
             _processor.minContourArea = _appSettings.MinContourArea;
             _processor.minContourLength = _appSettings.MinContourLength;
             _processor.finder.maxACFDescriptorDeviation = _appSettings.MaxACFDescriptorDeviation; //Auto correlation deviation
+            _processor.finder.maxACFDescriptorDeviation0 = _appSettings.MaxACFDescriptorDeviation0;
+            _processor.finder.maxACFDescriptorDeviation1 = _appSettings.MaxACFDescriptorDeviation1;
+            _processor.finder.maxACFDescriptorDeviation2 = _appSettings.MaxACFDescriptorDeviation2;
+            _processor.finder.maxACFDescriptorDeviation3 = _appSettings.MaxACFDescriptorDeviation3;
+            _processor.finder.maxACFDescriptorDeviation4 = _appSettings.MaxACFDescriptorDeviation4;
+            _processor.finder.maxACFDescriptorDeviation5 = _appSettings.MaxACFDescriptorDeviation5;
+            _processor.finder.maxACFDescriptorDeviation6 = _appSettings.MaxACFDescriptorDeviation6;
+            _processor.finder.maxACFDescriptorDeviation7 = _appSettings.MaxACFDescriptorDeviation7;
+            _processor.finder.maxACFDescriptorDeviation8 = _appSettings.MaxACFDescriptorDeviation8;
+            _processor.finder.maxACFDescriptorDeviation9 = _appSettings.MaxACFDescriptorDeviation9;
             _processor.finder.maxACFNormaDeviation = _appSettings.MaxACFNormaDeviation0; //Auto correlation norma deviation
             _processor.finder.maxACFNormaDeviation0 = _appSettings.MaxACFNormaDeviation0;
             _processor.finder.maxACFNormaDeviation1 = _appSettings.MaxACFNormaDeviation1;
