@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
@@ -11,6 +12,7 @@ namespace TemplatesViewer
     public partial class MainForm : Form
     {
         private ImageProcessor _processor;
+        private Dictionary<string, int> _templates;
 
         private string _currentFilename =
             Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName) +
@@ -47,9 +49,37 @@ namespace TemplatesViewer
 
         }
 
+        private void CalculateTemplates()
+        {
+            _templates = new Dictionary<string, int>(1);
+
+            _templates.Add("0", 0);
+            _templates.Add("1", 0);
+            _templates.Add("2", 0);
+            _templates.Add("3", 0);
+            _templates.Add("4", 0);
+            _templates.Add("5", 0);
+            _templates.Add("6", 0);
+            _templates.Add("7", 0);
+            _templates.Add("8", 0);
+            _templates.Add("9", 0);
+            _templates.Add("6890", 0);
+
+            foreach (var row in dgvTemplates.Rows)
+            {
+                _templates[(row as DataGridViewRow).Cells[1].Value.ToString()] += 1;
+            }
+        }
+
         void UpdateInterface()
         {
             dgvTemplates.RowCount = _processor.templates.Count;
+            CalculateTemplates();
+            templatesCounter.Rows.Clear();
+            foreach (var template in _templates)
+            {
+                templatesCounter.Rows.Add(new object[] { template.Key, template.Value.ToString() });
+            }
         }
 
         private void dgvTemplates_CellValueNeeded(object sender, DataGridViewCellValueEventArgs e)
@@ -154,6 +184,16 @@ namespace TemplatesViewer
         private void buttonReload_Click(object sender, EventArgs e)
         {
             LoadTemplateFile(_currentFilename);
+        }
+
+        private void dgvTemplates_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            CalculateTemplates();
+            templatesCounter.Rows.Clear();
+            foreach (var template in _templates)
+            {
+                templatesCounter.Rows.Add(new object[] { template.Key, template.Value.ToString() });
+            }
         }
     }
 }

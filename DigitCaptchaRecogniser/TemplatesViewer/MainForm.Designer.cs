@@ -37,8 +37,12 @@
             this.buttonSave = new System.Windows.Forms.Button();
             this.buttonReload = new System.Windows.Forms.Button();
             this.pictureBoxACF = new System.Windows.Forms.PictureBox();
+            this.templatesCounter = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTemplates)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxACF)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.templatesCounter)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvTemplates
@@ -59,6 +63,7 @@
             this.dgvTemplates.Size = new System.Drawing.Size(260, 444);
             this.dgvTemplates.TabIndex = 0;
             this.dgvTemplates.VirtualMode = true;
+            this.dgvTemplates.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTemplates_CellEndEdit);
             this.dgvTemplates.CellValueNeeded += new System.Windows.Forms.DataGridViewCellValueEventHandler(this.dgvTemplates_CellValueNeeded);
             this.dgvTemplates.CellValuePushed += new System.Windows.Forms.DataGridViewCellValueEventHandler(this.dgvTemplates_CellValuePushed);
             this.dgvTemplates.SelectionChanged += new System.EventHandler(this.dgvTemplates_SelectionChanged);
@@ -90,7 +95,7 @@
             // btDelete
             // 
             this.btDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btDelete.Location = new System.Drawing.Point(785, 444);
+            this.btDelete.Location = new System.Drawing.Point(971, 444);
             this.btDelete.Name = "btDelete";
             this.btDelete.Size = new System.Drawing.Size(99, 23);
             this.btDelete.TabIndex = 4;
@@ -138,16 +143,50 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxACF.Location = new System.Drawing.Point(278, 23);
             this.pictureBoxACF.Name = "pictureBoxACF";
-            this.pictureBoxACF.Size = new System.Drawing.Size(606, 415);
+            this.pictureBoxACF.Size = new System.Drawing.Size(608, 415);
             this.pictureBoxACF.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxACF.TabIndex = 8;
             this.pictureBoxACF.TabStop = false;
+            // 
+            // templatesCounter
+            // 
+            this.templatesCounter.AllowUserToAddRows = false;
+            this.templatesCounter.AllowUserToDeleteRows = false;
+            this.templatesCounter.AllowUserToResizeRows = false;
+            this.templatesCounter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.templatesCounter.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.templatesCounter.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.templatesCounter.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2});
+            this.templatesCounter.Location = new System.Drawing.Point(892, 23);
+            this.templatesCounter.Name = "templatesCounter";
+            this.templatesCounter.RowHeadersVisible = false;
+            this.templatesCounter.Size = new System.Drawing.Size(188, 415);
+            this.templatesCounter.TabIndex = 9;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dataGridViewTextBoxColumn1.FillWeight = 1F;
+            this.dataGridViewTextBoxColumn1.HeaderText = "Digit";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 40;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn2.HeaderText = "Quantity";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(896, 479);
+            this.ClientSize = new System.Drawing.Size(1082, 479);
+            this.Controls.Add(this.templatesCounter);
             this.Controls.Add(this.pictureBoxACF);
             this.Controls.Add(this.buttonReload);
             this.Controls.Add(this.buttonSave);
@@ -161,6 +200,7 @@
             this.Text = "Template Viewer";
             ((System.ComponentModel.ISupportInitialize)(this.dgvTemplates)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxACF)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.templatesCounter)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -177,5 +217,8 @@
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.Button buttonReload;
         private System.Windows.Forms.PictureBox pictureBoxACF;
+        private System.Windows.Forms.DataGridView templatesCounter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
     }
 }
