@@ -192,7 +192,7 @@ namespace DigitCaptchaRecogniser
             {
                 if ((histohramDigit.Digit.CropUnwantedBackground().Crop(new Rectangle(0, 20, 8, 7)).GetHistogram().Values[254] < 24) &&
                     (histohramDigit.Digit.CropUnwantedBackground().Crop(new Rectangle(10, 19, 6, 4)).GetHistogram().Values[254] > 7) &&
-                    (histohramDigit.Digit.CropUnwantedBackground().Crop(new Rectangle(0, 13, 3, 8)).GetHistogram().Values[254] > 12))
+                    (histohramDigit.Digit.CropUnwantedBackground().Crop(new Rectangle(0, 13, 3, 8)).GetHistogram().Values[254] > 8))
                 {
                     g.FillRectangle(new SolidBrush(Color.White), new Rectangle(0, 20, 8, 7));
                     g.DrawRectangle(new Pen(Color.Red), new Rectangle(0, 20, 8, 7));
@@ -463,7 +463,7 @@ namespace DigitCaptchaRecogniser
 
             if ((histohramDigit.Digit.CropUnwantedBackground().Crop(new Rectangle(0, 20, 8, 7)).GetHistogram().Values[254] < 24) &&
                 (histohramDigit.Digit.CropUnwantedBackground().Crop(new Rectangle(10, 19, 6, 4)).GetHistogram().Values[254] > 7) &&
-                (histohramDigit.Digit.CropUnwantedBackground().Crop(new Rectangle(0, 13, 3, 8)).GetHistogram().Values[254] > 12))
+                (histohramDigit.Digit.CropUnwantedBackground().Crop(new Rectangle(0, 13, 3, 8)).GetHistogram().Values[254] > 8))
             {
                 _rather9 = true;
             }
