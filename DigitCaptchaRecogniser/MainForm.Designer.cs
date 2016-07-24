@@ -164,7 +164,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1184, 865);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1184, 811);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // tableLayoutPanel7
@@ -191,7 +191,7 @@
             this.tableLayoutPanel7.Controls.Add(this.digit2Text, 2, 0);
             this.tableLayoutPanel7.Controls.Add(this.Template1Index, 1, 0);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(3, 801);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(3, 747);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 1;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -302,12 +302,12 @@
             this.tableLayoutPanel2.Controls.Add(this.digit1, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.digit2, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 136);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 127);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 143F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1178, 127);
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 127F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1178, 118);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // digit4
@@ -316,7 +316,7 @@
             this.digit4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.digit4.Location = new System.Drawing.Point(708, 3);
             this.digit4.Name = "digit4";
-            this.digit4.Size = new System.Drawing.Size(229, 121);
+            this.digit4.Size = new System.Drawing.Size(229, 112);
             this.digit4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.digit4.TabIndex = 13;
             this.digit4.TabStop = false;
@@ -327,7 +327,7 @@
             this.digit5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.digit5.Location = new System.Drawing.Point(943, 3);
             this.digit5.Name = "digit5";
-            this.digit5.Size = new System.Drawing.Size(232, 121);
+            this.digit5.Size = new System.Drawing.Size(232, 112);
             this.digit5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.digit5.TabIndex = 12;
             this.digit5.TabStop = false;
@@ -338,7 +338,7 @@
             this.digit3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.digit3.Location = new System.Drawing.Point(473, 3);
             this.digit3.Name = "digit3";
-            this.digit3.Size = new System.Drawing.Size(229, 121);
+            this.digit3.Size = new System.Drawing.Size(229, 112);
             this.digit3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.digit3.TabIndex = 11;
             this.digit3.TabStop = false;
@@ -349,7 +349,7 @@
             this.digit1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.digit1.Location = new System.Drawing.Point(3, 3);
             this.digit1.Name = "digit1";
-            this.digit1.Size = new System.Drawing.Size(229, 121);
+            this.digit1.Size = new System.Drawing.Size(229, 112);
             this.digit1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.digit1.TabIndex = 10;
             this.digit1.TabStop = false;
@@ -360,7 +360,7 @@
             this.digit2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.digit2.Location = new System.Drawing.Point(238, 3);
             this.digit2.Name = "digit2";
-            this.digit2.Size = new System.Drawing.Size(229, 121);
+            this.digit2.Size = new System.Drawing.Size(229, 112);
             this.digit2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.digit2.TabIndex = 9;
             this.digit2.TabStop = false;
@@ -379,12 +379,12 @@
             this.tableLayoutPanel3.Controls.Add(this.gaussDigit1, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.gaussDigit2, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 269);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 251);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 143F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1178, 127);
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 127F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1178, 118);
             this.tableLayoutPanel3.TabIndex = 12;
             // 
             // gaussDigit4
@@ -393,7 +393,7 @@
             this.gaussDigit4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gaussDigit4.Location = new System.Drawing.Point(708, 3);
             this.gaussDigit4.Name = "gaussDigit4";
-            this.gaussDigit4.Size = new System.Drawing.Size(229, 121);
+            this.gaussDigit4.Size = new System.Drawing.Size(229, 112);
             this.gaussDigit4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.gaussDigit4.TabIndex = 13;
             this.gaussDigit4.TabStop = false;
@@ -404,7 +404,7 @@
             this.gaussDigit5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gaussDigit5.Location = new System.Drawing.Point(943, 3);
             this.gaussDigit5.Name = "gaussDigit5";
-            this.gaussDigit5.Size = new System.Drawing.Size(232, 121);
+            this.gaussDigit5.Size = new System.Drawing.Size(232, 112);
             this.gaussDigit5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.gaussDigit5.TabIndex = 12;
             this.gaussDigit5.TabStop = false;
@@ -415,7 +415,7 @@
             this.gaussDigit3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gaussDigit3.Location = new System.Drawing.Point(473, 3);
             this.gaussDigit3.Name = "gaussDigit3";
-            this.gaussDigit3.Size = new System.Drawing.Size(229, 121);
+            this.gaussDigit3.Size = new System.Drawing.Size(229, 112);
             this.gaussDigit3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.gaussDigit3.TabIndex = 11;
             this.gaussDigit3.TabStop = false;
@@ -426,7 +426,7 @@
             this.gaussDigit1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gaussDigit1.Location = new System.Drawing.Point(3, 3);
             this.gaussDigit1.Name = "gaussDigit1";
-            this.gaussDigit1.Size = new System.Drawing.Size(229, 121);
+            this.gaussDigit1.Size = new System.Drawing.Size(229, 112);
             this.gaussDigit1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.gaussDigit1.TabIndex = 10;
             this.gaussDigit1.TabStop = false;
@@ -437,7 +437,7 @@
             this.gaussDigit2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gaussDigit2.Location = new System.Drawing.Point(238, 3);
             this.gaussDigit2.Name = "gaussDigit2";
-            this.gaussDigit2.Size = new System.Drawing.Size(229, 121);
+            this.gaussDigit2.Size = new System.Drawing.Size(229, 112);
             this.gaussDigit2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.gaussDigit2.TabIndex = 9;
             this.gaussDigit2.TabStop = false;
@@ -456,12 +456,12 @@
             this.tableLayoutPanel4.Controls.Add(this.contourDigit1, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.contourDigit2, 0, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 402);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 375);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 143F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(1178, 127);
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 127F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(1178, 118);
             this.tableLayoutPanel4.TabIndex = 13;
             // 
             // contourDigit4
@@ -470,7 +470,7 @@
             this.contourDigit4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.contourDigit4.Location = new System.Drawing.Point(708, 3);
             this.contourDigit4.Name = "contourDigit4";
-            this.contourDigit4.Size = new System.Drawing.Size(229, 121);
+            this.contourDigit4.Size = new System.Drawing.Size(229, 112);
             this.contourDigit4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.contourDigit4.TabIndex = 13;
             this.contourDigit4.TabStop = false;
@@ -481,7 +481,7 @@
             this.contourDigit5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.contourDigit5.Location = new System.Drawing.Point(943, 3);
             this.contourDigit5.Name = "contourDigit5";
-            this.contourDigit5.Size = new System.Drawing.Size(232, 121);
+            this.contourDigit5.Size = new System.Drawing.Size(232, 112);
             this.contourDigit5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.contourDigit5.TabIndex = 12;
             this.contourDigit5.TabStop = false;
@@ -492,7 +492,7 @@
             this.contourDigit3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.contourDigit3.Location = new System.Drawing.Point(473, 3);
             this.contourDigit3.Name = "contourDigit3";
-            this.contourDigit3.Size = new System.Drawing.Size(229, 121);
+            this.contourDigit3.Size = new System.Drawing.Size(229, 112);
             this.contourDigit3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.contourDigit3.TabIndex = 11;
             this.contourDigit3.TabStop = false;
@@ -503,7 +503,7 @@
             this.contourDigit1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.contourDigit1.Location = new System.Drawing.Point(3, 3);
             this.contourDigit1.Name = "contourDigit1";
-            this.contourDigit1.Size = new System.Drawing.Size(229, 121);
+            this.contourDigit1.Size = new System.Drawing.Size(229, 112);
             this.contourDigit1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.contourDigit1.TabIndex = 10;
             this.contourDigit1.TabStop = false;
@@ -514,7 +514,7 @@
             this.contourDigit2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.contourDigit2.Location = new System.Drawing.Point(238, 3);
             this.contourDigit2.Name = "contourDigit2";
-            this.contourDigit2.Size = new System.Drawing.Size(229, 121);
+            this.contourDigit2.Size = new System.Drawing.Size(229, 112);
             this.contourDigit2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.contourDigit2.TabIndex = 9;
             this.contourDigit2.TabStop = false;
@@ -533,12 +533,12 @@
             this.tableLayoutPanel5.Controls.Add(this.lastContourDigit1, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.lastContourDigit2, 0, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 535);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 499);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 143F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(1178, 127);
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 127F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(1178, 118);
             this.tableLayoutPanel5.TabIndex = 14;
             // 
             // lastContourDigit4
@@ -547,7 +547,7 @@
             this.lastContourDigit4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lastContourDigit4.Location = new System.Drawing.Point(708, 3);
             this.lastContourDigit4.Name = "lastContourDigit4";
-            this.lastContourDigit4.Size = new System.Drawing.Size(229, 121);
+            this.lastContourDigit4.Size = new System.Drawing.Size(229, 112);
             this.lastContourDigit4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.lastContourDigit4.TabIndex = 13;
             this.lastContourDigit4.TabStop = false;
@@ -558,7 +558,7 @@
             this.lastContourDigit5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lastContourDigit5.Location = new System.Drawing.Point(943, 3);
             this.lastContourDigit5.Name = "lastContourDigit5";
-            this.lastContourDigit5.Size = new System.Drawing.Size(232, 121);
+            this.lastContourDigit5.Size = new System.Drawing.Size(232, 112);
             this.lastContourDigit5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.lastContourDigit5.TabIndex = 12;
             this.lastContourDigit5.TabStop = false;
@@ -569,7 +569,7 @@
             this.lastContourDigit3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lastContourDigit3.Location = new System.Drawing.Point(473, 3);
             this.lastContourDigit3.Name = "lastContourDigit3";
-            this.lastContourDigit3.Size = new System.Drawing.Size(229, 121);
+            this.lastContourDigit3.Size = new System.Drawing.Size(229, 112);
             this.lastContourDigit3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.lastContourDigit3.TabIndex = 11;
             this.lastContourDigit3.TabStop = false;
@@ -580,7 +580,7 @@
             this.lastContourDigit1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lastContourDigit1.Location = new System.Drawing.Point(3, 3);
             this.lastContourDigit1.Name = "lastContourDigit1";
-            this.lastContourDigit1.Size = new System.Drawing.Size(229, 121);
+            this.lastContourDigit1.Size = new System.Drawing.Size(229, 112);
             this.lastContourDigit1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.lastContourDigit1.TabIndex = 10;
             this.lastContourDigit1.TabStop = false;
@@ -591,7 +591,7 @@
             this.lastContourDigit2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lastContourDigit2.Location = new System.Drawing.Point(238, 3);
             this.lastContourDigit2.Name = "lastContourDigit2";
-            this.lastContourDigit2.Size = new System.Drawing.Size(229, 121);
+            this.lastContourDigit2.Size = new System.Drawing.Size(229, 112);
             this.lastContourDigit2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.lastContourDigit2.TabIndex = 9;
             this.lastContourDigit2.TabStop = false;
@@ -610,12 +610,12 @@
             this.tableLayoutPanel6.Controls.Add(this.correlation1, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.correlation2, 0, 0);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 668);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 623);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 1;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 143F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(1178, 127);
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 127F));
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(1178, 118);
             this.tableLayoutPanel6.TabIndex = 15;
             // 
             // correlation4
@@ -624,7 +624,7 @@
             this.correlation4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.correlation4.Location = new System.Drawing.Point(708, 3);
             this.correlation4.Name = "correlation4";
-            this.correlation4.Size = new System.Drawing.Size(229, 121);
+            this.correlation4.Size = new System.Drawing.Size(229, 112);
             this.correlation4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.correlation4.TabIndex = 14;
             this.correlation4.TabStop = false;
@@ -635,7 +635,7 @@
             this.correlation5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.correlation5.Location = new System.Drawing.Point(943, 3);
             this.correlation5.Name = "correlation5";
-            this.correlation5.Size = new System.Drawing.Size(232, 121);
+            this.correlation5.Size = new System.Drawing.Size(232, 112);
             this.correlation5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.correlation5.TabIndex = 13;
             this.correlation5.TabStop = false;
@@ -646,7 +646,7 @@
             this.correlation3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.correlation3.Location = new System.Drawing.Point(473, 3);
             this.correlation3.Name = "correlation3";
-            this.correlation3.Size = new System.Drawing.Size(229, 121);
+            this.correlation3.Size = new System.Drawing.Size(229, 112);
             this.correlation3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.correlation3.TabIndex = 12;
             this.correlation3.TabStop = false;
@@ -657,7 +657,7 @@
             this.correlation1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.correlation1.Location = new System.Drawing.Point(3, 3);
             this.correlation1.Name = "correlation1";
-            this.correlation1.Size = new System.Drawing.Size(229, 121);
+            this.correlation1.Size = new System.Drawing.Size(229, 112);
             this.correlation1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.correlation1.TabIndex = 10;
             this.correlation1.TabStop = false;
@@ -668,7 +668,7 @@
             this.correlation2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.correlation2.Location = new System.Drawing.Point(238, 3);
             this.correlation2.Name = "correlation2";
-            this.correlation2.Size = new System.Drawing.Size(229, 121);
+            this.correlation2.Size = new System.Drawing.Size(229, 112);
             this.correlation2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.correlation2.TabIndex = 9;
             this.correlation2.TabStop = false;
@@ -682,7 +682,7 @@
             this.panel2.Controls.Add(this.buttonTeach);
             this.panel2.Controls.Add(this.checkBoxSaveFiles);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(3, 833);
+            this.panel2.Location = new System.Drawing.Point(3, 779);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1178, 29);
             this.panel2.TabIndex = 17;
@@ -780,7 +780,7 @@
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(1178, 127);
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(1178, 118);
             this.tableLayoutPanel8.TabIndex = 19;
             // 
             // textBoxAllDigits
@@ -797,7 +797,7 @@
             // 
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(3, 102);
+            this.label1.Location = new System.Drawing.Point(3, 93);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(386, 25);
             this.label1.TabIndex = 4;
@@ -810,7 +810,7 @@
             this.sourceImage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.sourceImage.Location = new System.Drawing.Point(3, 38);
             this.sourceImage.Name = "sourceImage";
-            this.sourceImage.Size = new System.Drawing.Size(386, 61);
+            this.sourceImage.Size = new System.Drawing.Size(386, 52);
             this.sourceImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.sourceImage.TabIndex = 5;
             this.sourceImage.TabStop = false;
@@ -895,7 +895,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(787, 38);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(388, 61);
+            this.panel3.Size = new System.Drawing.Size(388, 52);
             this.panel3.TabIndex = 21;
             // 
             // buttonSelectTeached
@@ -906,7 +906,7 @@
             this.buttonSelectTeached.Location = new System.Drawing.Point(168, 0);
             this.buttonSelectTeached.Margin = new System.Windows.Forms.Padding(0);
             this.buttonSelectTeached.Name = "buttonSelectTeached";
-            this.buttonSelectTeached.Size = new System.Drawing.Size(87, 61);
+            this.buttonSelectTeached.Size = new System.Drawing.Size(87, 52);
             this.buttonSelectTeached.TabIndex = 28;
             this.buttonSelectTeached.Text = "Select file";
             this.buttonSelectTeached.UseVisualStyleBackColor = true;
@@ -915,7 +915,7 @@
             // textBoxTestCount
             // 
             this.textBoxTestCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxTestCount.Location = new System.Drawing.Point(44, 39);
+            this.textBoxTestCount.Location = new System.Drawing.Point(42, 31);
             this.textBoxTestCount.Name = "textBoxTestCount";
             this.textBoxTestCount.Size = new System.Drawing.Size(78, 21);
             this.textBoxTestCount.TabIndex = 27;
@@ -924,7 +924,7 @@
             // label2
             // 
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(3, 39);
+            this.label2.Location = new System.Drawing.Point(0, 31);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(40, 21);
             this.label2.TabIndex = 26;
@@ -934,10 +934,10 @@
             // buttonTest
             // 
             this.buttonTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonTest.Location = new System.Drawing.Point(0, -1);
+            this.buttonTest.Location = new System.Drawing.Point(0, 1);
             this.buttonTest.Margin = new System.Windows.Forms.Padding(0);
             this.buttonTest.Name = "buttonTest";
-            this.buttonTest.Size = new System.Drawing.Size(122, 39);
+            this.buttonTest.Size = new System.Drawing.Size(122, 31);
             this.buttonTest.TabIndex = 25;
             this.buttonTest.Text = "Test first n";
             this.buttonTest.UseVisualStyleBackColor = true;
@@ -950,7 +950,7 @@
             this.buttonSave.Location = new System.Drawing.Point(256, 0);
             this.buttonSave.Margin = new System.Windows.Forms.Padding(0);
             this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(132, 61);
+            this.buttonSave.Size = new System.Drawing.Size(132, 52);
             this.buttonSave.TabIndex = 24;
             this.buttonSave.Text = "Save to teached";
             this.buttonSave.UseVisualStyleBackColor = true;
@@ -960,7 +960,7 @@
             // 
             this.panel4.Controls.Add(this.label4);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(395, 105);
+            this.panel4.Location = new System.Drawing.Point(395, 96);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(386, 19);
             this.panel4.TabIndex = 22;
@@ -980,7 +980,7 @@
             // 
             this.panel5.Controls.Add(this.labelTeachedFile);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(784, 102);
+            this.panel5.Location = new System.Drawing.Point(784, 93);
             this.panel5.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(391, 25);
@@ -1011,7 +1011,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1184, 865);
+            this.ClientSize = new System.Drawing.Size(1184, 811);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "MainForm";
             this.Text = "Digit Captcha Recogniser";
