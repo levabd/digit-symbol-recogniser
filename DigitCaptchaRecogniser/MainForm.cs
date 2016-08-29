@@ -212,8 +212,6 @@ namespace DigitCaptchaRecogniser
                 return;
             }
 
-            InitProcessors();
-
             //sourceImage.Image = sourceImage.Image.Grayscale().Median(0).Threshold(200);
 
             var digits = sourceImage.Image.ExtractDigits(_appSettings.DigitWidth, _appSettings.SecondDigitWidth);
@@ -223,6 +221,7 @@ namespace DigitCaptchaRecogniser
                 textBoxAllDigits.Text = "";
                 for (int digitCounter = 0; digitCounter < digits.Count; digitCounter++)
                 {
+                    InitProcessors();
                     digits[digitCounter].NormalDigitWidth = _appSettings.NormalDigitWidth;
                     digits[digitCounter].NormalDigitHeight = _appSettings.NormalDigitHeight;
                     digits[digitCounter].CropDigitAddHeight(_appSettings.ImageVerticalBorder, ColorTranslator.FromHtml("#1B65AA"));

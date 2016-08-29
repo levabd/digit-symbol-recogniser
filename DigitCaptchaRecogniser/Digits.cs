@@ -190,18 +190,18 @@ namespace DigitCaptchaRecogniser
             Bitmap image = histohramDigit.Digit.CropUnwantedBackground();
             using (Graphics g = Graphics.FromImage(image))
             {
-                if ((histohramDigit.Digit.CropUnwantedBackground().Crop(new Rectangle(0, 22, 4, 4)).GetHistogram().Values[254] < 5) &&
-                    (histohramDigit.Digit.CropUnwantedBackground().Crop(new Rectangle(7, 18, 7, 7)).GetHistogram().Values[254] > 4) &&
-                    (histohramDigit.Digit.CropUnwantedBackground().Crop(new Rectangle(0, 13, 7, 7)).GetHistogram().Values[254] > 10))
+                if ((histohramDigit.Digit.CropUnwantedBackground().Crop(new Rectangle(0, 20, 8, 7)).GetHistogram().Values[254] < 24) &&
+                    (histohramDigit.Digit.CropUnwantedBackground().Crop(new Rectangle(10, 19, 6, 4)).GetHistogram().Values[254] > 7) &&
+                    (histohramDigit.Digit.CropUnwantedBackground().Crop(new Rectangle(0, 13, 3, 8)).GetHistogram().Values[254] > 12))
                 {
-                    g.FillRectangle(new SolidBrush(Color.White), new Rectangle(0, 22, 8, 7));
-                    g.DrawRectangle(new Pen(Color.Red), new Rectangle(0, 22, 8, 7));
+                    g.FillRectangle(new SolidBrush(Color.White), new Rectangle(0, 20, 8, 7));
+                    g.DrawRectangle(new Pen(Color.Red), new Rectangle(0, 20, 8, 7));
                     g.DrawString("9", new Font(FontFamily.GenericSansSerif, 5), new SolidBrush(Color.Black), new RectangleF(0, 22, 5, 6));
 
                 }
-                else if ((histohramDigit.Digit.CropUnwantedBackground().Crop(new Rectangle(15, 6, 4, 4)).GetHistogram().Values[254] < 10) &&
+                else if ((histohramDigit.Digit.CropUnwantedBackground().Crop(new Rectangle(15, 6, 7, 7)).GetHistogram().Values[254] < 22) &&
                     (histohramDigit.Digit.CropUnwantedBackground().Crop(new Rectangle(7, 13, 7, 7)).GetHistogram().Values[254] > 4) &&
-                    (histohramDigit.Digit.CropUnwantedBackground().Crop(new Rectangle(0, 13, 5, 5)).GetHistogram().Values[254] > 12))
+                    (histohramDigit.Digit.CropUnwantedBackground().Crop(new Rectangle(0, 13, 3, 8)).GetHistogram().Values[254] > 12))
                 {
                     g.FillRectangle(new SolidBrush(Color.White), new Rectangle(15, 6, 7, 7));
                     g.DrawRectangle(new Pen(Color.Red), new Rectangle(15, 6, 7, 7));
@@ -461,15 +461,15 @@ namespace DigitCaptchaRecogniser
             histohramDigit.Median(0);
             histohramDigit.RemoveNoise(10);
 
-            if ((histohramDigit.Digit.CropUnwantedBackground().Crop(new Rectangle(0, 22, 4, 4)).GetHistogram().Values[254] < 5) &&
-                (histohramDigit.Digit.CropUnwantedBackground().Crop(new Rectangle(7, 18, 7, 7)).GetHistogram().Values[254] > 4) &&
-                (histohramDigit.Digit.CropUnwantedBackground().Crop(new Rectangle(0, 13, 7, 7)).GetHistogram().Values[254] > 10))
+            if ((histohramDigit.Digit.CropUnwantedBackground().Crop(new Rectangle(0, 20, 8, 7)).GetHistogram().Values[254] < 24) &&
+                (histohramDigit.Digit.CropUnwantedBackground().Crop(new Rectangle(10, 19, 6, 4)).GetHistogram().Values[254] > 7) &&
+                (histohramDigit.Digit.CropUnwantedBackground().Crop(new Rectangle(0, 13, 3, 8)).GetHistogram().Values[254] > 12))
             {
                 _rather9 = true;
             }
-            else if ((histohramDigit.Digit.CropUnwantedBackground().Crop(new Rectangle(15, 6, 4, 4)).GetHistogram().Values[254] < 10) &&
-                (histohramDigit.Digit.CropUnwantedBackground().Crop(new Rectangle(7, 13, 7, 7)).GetHistogram().Values[254] > 4) &&
-                (histohramDigit.Digit.CropUnwantedBackground().Crop(new Rectangle(0, 13, 5, 5)).GetHistogram().Values[254] > 12))
+            else if ((histohramDigit.Digit.CropUnwantedBackground().Crop(new Rectangle(15, 6, 7, 7)).GetHistogram().Values[254] < 22) &&
+                    (histohramDigit.Digit.CropUnwantedBackground().Crop(new Rectangle(7, 13, 7, 7)).GetHistogram().Values[254] > 4) &&
+                    (histohramDigit.Digit.CropUnwantedBackground().Crop(new Rectangle(0, 13, 3, 8)).GetHistogram().Values[254] > 12))
             {
                 _rather6 = true;
 
