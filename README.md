@@ -48,22 +48,6 @@ Written only to demonstrate the possibilities of recognition noisy digits
 
 # <a name="algo"></a> Алгоритм
 
-1. Cutting the numbers
-2. Crop and add border to image
-3. Kuwahara with core 2 (2 times in sequence) [2](#literature-2)
-![](./docPictures/digit0.png?raw=true) ![](./docPictures/digit3.png?raw=true)
-4. Threshold
-5. Remove small objects (area criteria 25)
-![](./docPictures/gauss0.png?raw=true) ![](./docPictures/gauss3.png?raw=true)
-6. Gauss blur (sigma 3 and kernel size 4) of contour [3](#literature-3)
-7. Threshold
-8. If Longest contour / Second longest contour < 3 select Second longest contour
-![](./docPictures/contour0.png?raw=true) ![](./docPictures/contour3.png?raw=true)
-9. Gauss blur (sigma 3 and kernel size 4) of contour 
-10. Adaptive Threshold of contour (Canny) [4](#literature-4)
-![](./docPictures/lastContour0.png?raw=true) ![](./docPictures/lastContour3.png?raw=true)
-11. Contour analysis http://www.codeproject.com/Articles/196168/Contour-Analysis-for-Image-Recognition-in-C Deviation 2 [5](#literature-5)
-![](./docPictures/correlation0.png?raw=true) ![](./docPictures/correlation3.png?raw=true)
 
 ## <a name="algo-preprocessing"></a> Предварительная обработка
 
