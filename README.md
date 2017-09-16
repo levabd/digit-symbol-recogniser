@@ -1,3 +1,5 @@
+[![Analytics](https://ga-beacon.appspot.com/UA-106545668-1/stack-updater)](https://github.com/igrigorik/ga-beacon)
+
 NOT FOR COMMERTIAL USE!!!
 Written only to demonstrate the possibilities of recognition noisy digits
 
